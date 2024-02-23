@@ -8,7 +8,7 @@ Repositorio con implementación de servicios de propiedades de los alpes siguien
 El repositorio en su raíz está estructurado de la siguiente forma:
 
 - **.github**: Directorio donde se localizan templates para Github y los CI/CD workflows 
-- **src**: En este directorio encuentra el código fuente para AeroAlpes. En la siguiente sección se explica un poco mejor la estructura del mismo ([link](https://blog.ionelmc.ro/2014/05/25/python-packaging/#the-structure%3E) para más información)
+- **src**: En este directorio encuentra el código fuente para proyecto, propiedades de los alpes.
 - **tests**: Directorio con todos los archivos de prueba, tanto unitarios como de integración. Sigue el estándar [recomendado por pytest](https://docs.pytest.org/en/7.1.x/explanation/goodpractices.html) y usado por [boto](https://github.com/boto/boto).
 - **.gitignore**: Archivo con la definición de archivos que se deben ignorar en el repositorio GIT
 - **.gitpod.yml**: Archivo que define las tareas/pasos a ejecutar para configurar su workspace en Gitpod

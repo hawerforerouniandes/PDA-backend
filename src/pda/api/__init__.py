@@ -6,12 +6,12 @@ from flask_swagger import swagger
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 def importar_modelos_alchemy():
-    import aeroalpes.modulos.cliente.infraestructura.dto
-    import aeroalpes.modulos.hoteles.infraestructura.dto
-    import aeroalpes.modulos.pagos.infraestructura.dto
-    import aeroalpes.modulos.precios_dinamicos.infraestructura.dto
-    import aeroalpes.modulos.vehiculos.infraestructura.dto
-    import aeroalpes.modulos.vuelos.infraestructura.dto
+    import pda.modulos.cliente.infraestructura.dto
+    import pda.modulos.hoteles.infraestructura.dto
+    import pda.modulos.pagos.infraestructura.dto
+    import pda.modulos.precios_dinamicos.infraestructura.dto
+    import pda.modulos.vehiculos.infraestructura.dto
+    import pda.modulos.vuelos.infraestructura.dto
 
 def create_app(configuracion=None):
     # Init la aplicacion de Flask
@@ -23,10 +23,10 @@ def create_app(configuracion=None):
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
      # Inicializa la DB
-    from aeroalpes.config.db import init_db
+    from pda.config.db import init_db
     init_db(app)
 
-    from aeroalpes.config.db import db
+    from pda.config.db import db
 
     importar_modelos_alchemy()
 

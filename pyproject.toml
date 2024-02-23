@@ -6,7 +6,7 @@ authors = [
   { name="Hawer Forero", email="h.foreror@uniandes.edu.co" },
   { name="Jael Rivera", email="ja.riverao1@uniandes.edu.co" }
 ]
-description = "Proyecto de ejemplo de AeroAlpes"
+description = "Proyecto de Propiedades de los alpes"
 readme = "README.md"
 requires-python = ">=3.10"
 
