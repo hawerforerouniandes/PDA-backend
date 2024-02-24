@@ -21,6 +21,16 @@ class ServicioPropiedad(Servicio):
         return self._fabrica_propiedades
 
     def crear_propiedad(self, propiedad_dto: PropiedadDTO) -> PropiedadDTO:
+        propiedad: Propiedad = self.fabrica_propiedades.crear_objeto(propiedad_dto, MapeadorPropiedad())
+        propiedad.crear_propiedad(propiedad)
+
+        repositorio = self.fabrica_repositorio.crear_objeto(RepositorioPropiedades.__class__)
+
+        # UOW Añadir
+        UnidadTrabajoPuerto.registrar_batch(repositorio.agregar, reserva)
+        UnidadTrabajoPuerto.savepoint()
+        UnidadTrabajoPuerto.commit()
+        return self.fabrica_propiedades.crear_objeto(propiedad, MapeadorPropiedad())
         ...
 
     

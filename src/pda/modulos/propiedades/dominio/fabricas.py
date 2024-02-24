@@ -12,7 +12,7 @@ from pda.seedwork.dominio.entidades import Entidad
 from dataclasses import dataclass
 
 @dataclass
-class _FabricaPropiedad(Fabrica):
+class _FabricaPropiedades(Fabrica):
     def crear_objeto(self, obj: any, mapeador: Mapeador) -> any:
         if isinstance(obj, Entidad):
             return mapeador.entidad_a_dto(obj)
@@ -21,10 +21,10 @@ class _FabricaPropiedad(Fabrica):
             return propiedad
 
 @dataclass
-class FabricaPropiedad(Fabrica):
+class FabricaPropiedades(Fabrica):
     def crear_objeto(self, obj: any, mapeador: Mapeador) -> any:
         if mapeador.obtener_tipo() == Propiedad.__class__:
-            fabrica_propiedad = _FabricaPropiedad()
+            fabrica_propiedad = _FabricaPropiedades()
             return fabrica_propiedad.crear_objeto(obj, mapeador)
         else:
             raise TipoObjetoNoExisteEnDominioPropiedadesExcepcion()
