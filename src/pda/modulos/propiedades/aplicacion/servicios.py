@@ -3,6 +3,7 @@ from pda.modulos.propiedades.dominio.entidades import Propiedad
 from pda.modulos.propiedades.dominio.fabricas import FabricaPropiedades
 from pda.modulos.propiedades.infraestructura.fabricas import FabricaRepositorio
 from pda.modulos.propiedades.infraestructura.repositorios import RepositorioPropiedades
+from pda.seedwork.infraestructura.uow import UnidadTrabajoPuerto
 from .mapeadores import MapeadorPropiedad
 
 from .dto import PropiedadDTO
@@ -27,10 +28,9 @@ class ServicioPropiedad(Servicio):
         repositorio = self.fabrica_repositorio.crear_objeto(RepositorioPropiedades.__class__)
 
         # UOW Añadir
-        UnidadTrabajoPuerto.registrar_batch(repositorio.agregar, reserva)
+        UnidadTrabajoPuerto.registrar_batch(repositorio.agregar, propiedad)
         UnidadTrabajoPuerto.savepoint()
         UnidadTrabajoPuerto.commit()
         return self.fabrica_propiedades.crear_objeto(propiedad, MapeadorPropiedad())
-        ...
 
     
