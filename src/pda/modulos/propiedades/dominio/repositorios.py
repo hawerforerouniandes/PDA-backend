@@ -4,3 +4,5 @@ En este archivo usted encontrará las diferentes interfaces para repositorios
 del dominio de propiedades
 
 """
+class RepositorioPropiedades(Repositorio, ABC):
+    ...
