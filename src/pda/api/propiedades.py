@@ -1,3 +1,12 @@
+from pda.modulos.propiedades.aplicacion.mapeadores import MapeadorPropiedadDTOJson
+from pda.modulos.propiedades.aplicacion.servicios import ServicioPropiedad
+from pda.modulos.transacciones.aplicacion.mapeadores import MapeadorTransaccionDTOJson
+from pda.seedwork.dominio.excepciones import ExcepcionDominio
+from pda.seedwork.presentacion import api
+import json
+from flask import request
+from flask import Response
+
 bp = api.crear_blueprint()
 
 @bp.route('/propiedad', methods=('POST',))
@@ -21,7 +30,7 @@ def asignar_transaccion():
         map_transaccion = MapeadorTransaccionDTOJson()
         transaccion_dto = map_transaccion.externo_a_dto(transaccion_dict)
 
-        sp = ServicioTransaccion()
+        sp = ServicioPropiedad()
         dto_final = sp.asignar_transaccion(transaccion_dto)
         return map_transaccion.dto_a_externo(dto_final)
 

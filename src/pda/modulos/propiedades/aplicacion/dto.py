@@ -28,11 +28,9 @@ class InformacionCatastralDTO(DTO):
 
 @dataclass(frozen=True)
 class PropiedadDTO(DTO):
-    fecha_creacion: str = field(default_factory=str)
-    fecha_actualizacion: str = field(default_factory=str)
     id: str = field(default_factory=str)
     nombre: str = field(default_factory=str)
-    informacion_geoespacial: InformacionGeoespacialDTO = field(default_factory=dict)
-    informacion_compania: InformacionCompaniaDTO = field(default_factory=dict)
-    informacion_contractual: InformacionContractualDTO = field(default_factory=dict)
-    informacion_catastral: InformacionCatastralDTO = field(default_factory=dict)
+    informacion_geoespacial: InformacionGeoespacialDTO = field(default_factory=InformacionGeoespacialDTO)
+    informacion_compania: InformacionCompaniaDTO = field(default_factory=InformacionCompaniaDTO)
+    informacion_contractual: InformacionContractualDTO = field(default_factory=InformacionContractualDTO)
+    informacion_catastral: InformacionCatastralDTO = field(default_factory=InformacionCatastralDTO)

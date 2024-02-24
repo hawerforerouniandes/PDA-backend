@@ -6,12 +6,8 @@ from flask_swagger import swagger
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 def importar_modelos_alchemy():
-    import pda.modulos.cliente.infraestructura.dto
-    import pda.modulos.hoteles.infraestructura.dto
-    import pda.modulos.pagos.infraestructura.dto
-    import pda.modulos.precios_dinamicos.infraestructura.dto
-    import pda.modulos.vehiculos.infraestructura.dto
-    import pda.modulos.vuelos.infraestructura.dto
+    import pda.modulos.propiedades.infraestructura.dto
+    import pda.modulos.transacciones.infraestructura.dto
 
 def create_app(configuracion=None):
     # Init la aplicacion de Flask
@@ -34,21 +30,12 @@ def create_app(configuracion=None):
         db.create_all()
 
      # Importa Blueprints
-    from . import cliente
-    from . import hoteles
-    from . import pagos
-    from . import precios_dinamicos
-    from . import vehiculos
-    from . import vuelos
+    from . import transacciones
+    from . import propiedades
 
     # Registro de Blueprints
-    app.register_blueprint(cliente.bp)
-    app.register_blueprint(hoteles.bp)
-    app.register_blueprint(pagos.bp)
-    app.register_blueprint(precios_dinamicos.bp)
-    app.register_blueprint(vehiculos.bp)
-    app.register_blueprint(vuelos.bp)
-
+    app.register_blueprint(transacciones.bp)
+    app.register_blueprint(propiedades.bp)
     @app.route("/spec")
     def spec():
         swag = swagger(app)

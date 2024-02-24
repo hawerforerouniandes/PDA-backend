@@ -7,6 +7,8 @@ from pda.seedwork.infraestructura.uow import UnidadTrabajoPuerto
 from .mapeadores import MapeadorPropiedad
 
 from .dto import PropiedadDTO
+from ...transacciones.aplicacion.dto import TransaccionDTO
+
 
 class ServicioPropiedad(Servicio):
     def __init__(self):
