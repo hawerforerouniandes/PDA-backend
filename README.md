@@ -6,6 +6,7 @@ Repositorio con implementación de servicios de propiedades de los alpes siguien
 - Python 
 - docker
 - docker-compose
+- python3.9
 
 
 ## Estructura del proyecto
@@ -68,6 +69,17 @@ Siempre puede ejecutarlo en modo DEBUG:
 
 ```bash
 flask --app src/pda/api --debug run
+```
+
+## start project 
+
+Procederemos a crear un ambiente virtual para poder ejecutar nuestras dependencias
+
+```bash
+python3 -m venv venv    
+source venv/bin/activate 
+python3 -m pip install -r requirements.txt
+
 ```
 
 

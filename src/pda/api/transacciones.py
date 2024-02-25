@@ -3,7 +3,8 @@ from pulsar.schema import *
 import os
 import requests
 import json
-
+from src.pda.modulos.transacciones.aplicacion.mapeadores import MapeadorTransaccionDTOJson, MapeadorTransaccion
+from src.pda.modulos.transacciones.aplicacion.servicio_transaccion import ServicioTransaccion
 
 
 from pulsar.schema import *
@@ -48,6 +49,17 @@ try:
         try:
             # Process the message
             print(f'Evento recibido: {msg.value()}')
+
+            mapeadorTransaccionDTOJson = MapeadorTransaccionDTOJson()
+            mapeadorTransaccion = MapeadorTransaccion()
+
+            servicioTransaccion = ServicioTransaccion()
+
+            transaccion=mapeadorTransaccion.dto_a_entidad(mapeadorTransaccionDTOJson.externo_a_dto(msg.value()))
+            servicioTransaccion.procesar_transaccion_recibida(transaccion)
+
+
+            print("finalizo el proceso")
             # Acknowledge successful processing of the message
             consumer.acknowledge(msg)
         except Exception as e:

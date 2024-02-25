@@ -23,3 +23,5 @@ pulsar-client[avro]==3.1.0
 websockets==10.4
 fastavro
 requests
+firebase_admin
+google-cloud-datastore

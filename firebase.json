@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "alpes-propiedades",
+  "private_key_id": "6b328192eccc605230230747ce906892198b42c3",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDX0dc5l7jAVlUo\nyTooXbch08WpPtwCjSqIdKz/fx/IQ5R+rcr+rhwR7cdbwaVljcdAr5PJaayqtjCk\n3DjBWi283kb/zhZfdx7tqL1bpL2izh4hwE+2NxDbTMr9UQkvRHh5iTHIXbD8lrn7\nmtlCeNHoyhWcDnm6Fg1SVXLC6JkzWJFI2mRq3F1i3BxIanIdHQ0DZmeSag+BGL0G\np9RSdbgqU6FD1Lppdk8RFa9vaY5PDfcmHo8IPhBhqk11CCChduF+ihuWY26YYfpo\nNCeeszyhu/UbVUJ3AfMka5O6j+jiWEXvSqBrgCE9Nf5PPtCxCBxUvfmnegnVYJxP\nKhWxGL7/AgMBAAECgf8I2hJ5yj9JpEDZ62b3QODCAm2ZA3sCn8ee0SpHUG99R0hP\n6dDpoTqFgbsriEXAZJBHluv41ty+I7rbCC1LwOcfV/6Rf2Jrh/c8yC78E0Wz58BU\nog6i6p9GX1/0A97ckXJficEA9tbLhWMbbr56e3ogkilQvUdA2qaxOc/7Lo8aC/SQ\nw90BKzXTkGH/sXa0qOVXXPVI/O1D7NOHGd6HH0w5qYOMv2r473N3BRyGqMzeJD2z\nRHJj2geGSpQUYBWcEjvVK/9kN6FkKZlo6XcW0aan2LIQIv991D6HdbcH3cRq/w4Z\njDxUiB1iQJ1/5qSOCIHWHS+V5O6nhlfCODX694ECgYEA/yxPDehJOK63rAj3NppZ\nDdqO0WtM3QV+8D8isgKHYAo3OkeRtDY/vafJcOqNdCpGRd4nb+6f9J03h7c/rqZB\n0Lgoe+9vD0HoOvXny/euCaivpsN2TJkDi+Z9sycOt2VYB61V+gkIhrUJcaiEk/od\n4mjXZ/8X0K12lFVqPOhnZoECgYEA2ITiaFEHz3yxn3qMhx47bNlikonzdXMFR9V7\ndIDmaAi1DHv6q3/vSrMlz68E6Lh75eY8rYw+jH+tNppWu32CBu1BMGTDE4xJN5aY\njGMj6nMDvkOUVEO7s9duBWDDEi1unXA1nSsvzVqmelD/6HWrwzIWyb7PgRzFhyj9\nisRcZX8CgYB1LVS0LzoIlHr1vjw/z8sbSIUS9/IZAOAU1PlKw0yFNsu7sIfhOJQ2\ntGkVuC/y60LP7L8xcGP1wYhxgx30RpaskRTOLNpUKFDLWobyLC+4ccUPkGyvqght\n4w9QCJyCbUBqbhewNRu8OEA4+EjBZzb39GsOb57xDecJINwjUhnBgQKBgQCJWqti\nb90blEf+GrkhUl1ybOlqetcWb/QuoNBjlQ4Ve0iXdeMMfulnowRenvHnTHlU290s\nX2airLBOjlRtNm6RRFtxfsp+ESW1fPSjQpVbOsFqJubnGdzudsDV6o91bZrZh4CL\nhwUZKeOoftAJQPTIrHLmYwSyLHVmi+tj57ORswKBgQD98yfjq69uzNuqlTD+muZb\nwdjh6phOrc9fo0AHlpnIAOpA4b2reU2NH+nmwqRdtcLIvtzNEMOuz8Pzkh0DY78q\n/s2691eSCEMiM8Wvf3ggSLSKeUoUVSwFf2yhH8hF2A/lo5Dl11gWVioqrcmx1kE2\nlAKXJMUsEFadKf+HeA1jOw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebaseaccess@alpes-propiedades.iam.gserviceaccount.com",
+  "client_id": "107477223574688559092",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebaseaccess%40alpes-propiedades.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
