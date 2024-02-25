@@ -27,7 +27,7 @@ El repositorio en su raíz está estructurado de la siguiente forma:
 Desde el directorio principal ejecute el siguiente comando desde la terminal de comandos.
 
 ```bash
-docker-compose up 
+docker-compose  --profile pulsar up
 ```
 
 una vez este arriba los servicios procedemos a crear los topics
