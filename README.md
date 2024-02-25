@@ -82,6 +82,21 @@ python3 -m pip install -r requirements.txt
 
 ```
 
+### Crear imagen Docker
+
+Desde el directorio principal ejecute el siguiente comando.
+
+```bash
+docker build . -f pda.Dockerfile -t pda/flask
+```
+
+### Ejecutar contenedora (sin compose)
+
+Desde el directorio principal ejecute el siguiente comando.
+
+```bash
+docker run -p 5000:5000 pda/flask
+
 
 ## Request de ejemplo
 
