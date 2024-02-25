@@ -46,12 +46,12 @@ class FirestorePropiedadRepository(RepositorioPropiedades):
             "informacion_geoespacial": entity.informacion_geoespacial,
             "informacion_compania": entity.informacion_compania
         }
-
         # Add to Firestore (consider handling exceptions and validations)
         key = self.client.key('propiedades')
         transaction_ref = datastore.Entity(key=key)
         transaction_ref.update(propiedad_dict)
         self.client.put(transaction_ref)
+        print("Propiedad a Persistir: ", propiedad_dict)
         return entity
 
     def asignar_transaccion(self, entity: Transaccion):

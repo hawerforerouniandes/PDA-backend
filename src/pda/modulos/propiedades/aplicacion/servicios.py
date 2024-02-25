@@ -4,6 +4,7 @@ from pda.modulos.propiedades.dominio.fabricas import FabricaPropiedades
 from pda.modulos.propiedades.infraestructura.fabricas import FabricaRepositorio
 from pda.modulos.propiedades.infraestructura.repositorios import RepositorioPropiedades
 from pda.seedwork.infraestructura.uow import UnidadTrabajoPuerto
+from .handlers import HandlerPropiedadIntegracion
 from .mapeadores import MapeadorPropiedad
 
 from .dto import PropiedadDTO
@@ -34,5 +35,9 @@ class ServicioPropiedad(Servicio):
         #UnidadTrabajoPuerto.savepoint()
         #UnidadTrabajoPuerto.commit()
         return self.fabrica_propiedades.crear_objeto(propiedad, MapeadorPropiedad())
+
+    def asignar_transaccion(self, transaccion_dto: TransaccionDTO) -> TransaccionDTO:
+        HandlerPropiedadIntegracion.handle_asignar_transaccion(transaccion_dto)
+        return transaccion_dto
 
     
