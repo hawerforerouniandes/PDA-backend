@@ -25,3 +25,4 @@ fastavro
 requests
 firebase_admin
 google-cloud-datastore
+PyDispatcher==2.0.6

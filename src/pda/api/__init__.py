@@ -1,6 +1,8 @@
 import os
 from flask import Flask, render_template, request, url_for, redirect, jsonify
 from flask_swagger import swagger
+import threading
+import pda.modulos.propiedades.infraestructura.consumidores as consumidor_propiedades_update
 
 # Identifica el directorio base
 basedir = os.path.abspath(os.path.dirname(__file__))
@@ -28,13 +30,14 @@ def create_app(configuracion=None):
 
     with app.app_context():
         db.create_all()
+        threading.Thread(target=consumidor_propiedades_update.suscribirse_transacciones_update).start()
+        
 
      # Importa Blueprints
     from . import transacciones
     from . import propiedades
 
     # Registro de Blueprints
-    app.register_blueprint(transacciones.bp)
     app.register_blueprint(propiedades.bp)
     @app.route("/spec")
     def spec():

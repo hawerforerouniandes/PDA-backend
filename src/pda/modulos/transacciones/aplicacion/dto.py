@@ -1,6 +1,6 @@
 from dataclasses import dataclass, field
 
-from src.pda.seedwork.aplicacion.dto import DTO
+from pda.seedwork.aplicacion.dto import DTO
 
 @dataclass(frozen=True)
 class TransaccionDTO(DTO):

@@ -7,7 +7,7 @@ import json
 from flask import request
 from flask import Response
 
-bp = api.crear_blueprint()
+bp = api.crear_blueprint("","")
 
 @bp.route('/propiedad', methods=('POST',))
 def crear_propiedad():

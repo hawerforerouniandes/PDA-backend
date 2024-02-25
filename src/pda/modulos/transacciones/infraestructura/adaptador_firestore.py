@@ -2,7 +2,7 @@
 from google.cloud import datastore
 import uuid
 from datetime import datetime
-from src.pda.modulos.transacciones.dominio.entidades import Transaccion, TransaccionRepository
+from pda.modulos.transacciones.dominio.entidades import Transaccion, TransaccionRepository
 import firebase_admin
 from firebase_admin import credentials
 import os
@@ -26,10 +26,11 @@ class FirestoreTransaccionRepository(TransaccionRepository):
         }
 
         # Add to Firestore (consider handling exceptions and validations)
-        key = self.client.key('transaction_id')
+        key = self.client.key('transacciones')
         transaction_ref = datastore.Entity(key=key)
         transaction_ref.update(transaccion_dict)
         self.client.put(transaction_ref)
+        return transaccion_dict
 
     def inicializar_firebase(self):
         try:
