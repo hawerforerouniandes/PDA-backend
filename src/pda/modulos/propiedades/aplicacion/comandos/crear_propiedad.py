@@ -40,7 +40,7 @@ class CrearPropiedadHandler(CrearPropiedadBaseHandler):
         UnidadTrabajoPuerto.commit()
 
 @comando.register(CrearPropiedad)
-def ejecutar_comando_crear_reserva(comando: CrearPropiedad):
+def ejecutar_comando_crear_propiedad(comando: CrearPropiedad):
     handler = CrearPropiedadHandler()
     handler.handle(comando)
 

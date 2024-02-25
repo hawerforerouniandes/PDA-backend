@@ -7,6 +7,8 @@ objetos complejos en la capa de infraestructura del dominio de propiedades
 from dataclasses import dataclass
 
 from pda.modulos.propiedades.dominio.repositorios import RepositorioPropiedades, RepositorioTransacciones
+from pda.modulos.propiedades.infraestructura.repositorios import FirestorePropiedadRepository
+from pda.modulos.transacciones.infraestructura.adaptador_firestore import FirestoreTransaccionRepository
 from pda.seedwork.dominio.excepciones import ExcepcionFabrica
 from pda.seedwork.dominio.fabricas import Fabrica
 from pda.seedwork.dominio.repositorios import Repositorio
@@ -16,12 +18,6 @@ from pda.seedwork.dominio.repositorios import Repositorio
 class FabricaRepositorio(Fabrica):
     def crear_objeto(self, obj: type, mapeador: any = None) -> Repositorio:
         if obj == RepositorioPropiedades.__class__:
-            return Repositorio()
-            #return RepositorioPropiedadesSQL
-            ...
-        elif obj == RepositorioTransacciones.__class__:
-            return Repositorio()
-            #return RepositorioTransaccionesSQL()
-            ...
+            return FirestorePropiedadRepository()
         else:
             raise ExcepcionFabrica()

@@ -26,11 +26,15 @@ class MapeadorPropiedad(RepMap):
         fecha_actualizacion = entidad.fecha_actualizacion.strftime(self._FORMATO_FECHA)
         _id = str(entidad.id)
         _nombre = str(entidad.nombre)
-        _informacion_geoespacial = InformacionGeoespacialDTO(entidad.informacion_geoespacial)
-        _informacion_compania = InformacionCompaniaDTO(entidad.informacion_compania)
-        _informacion_contractual = InformacionContractualDTO(entidad.informacion_contractual)
-        _informacion_catastral = InformacionCatastralDTO(entidad.informacion_catastral)
-        return PropiedadDTO(fecha_creacion, fecha_actualizacion, _id, _nombre, _informacion_geoespacial, _informacion_compania, _informacion_contractual, _informacion_catastral )
+        _igeo = entidad.informacion_geoespacial
+        _icom = entidad.informacion_compania
+        _icon = entidad.informacion_contractual
+        _icat = entidad.informacion_catastral
+        _informacion_geoespacial = InformacionGeoespacialDTO(_igeo.get('direccion'), _igeo.get('ciudad'), _igeo.get('departamento'), _igeo.get('pais'))
+        _informacion_compania = InformacionCompaniaDTO(_icom.get('nombre_propietario'), _icom.get('nit'), _icom.get('telefono'))
+        _informacion_contractual = InformacionContractualDTO(_icon.get('fotografias'))
+        _informacion_catastral = InformacionCatastralDTO(_icat.get('tipo'), _icat.get('tamano'), _icat.get('tipo_construccion'), _icat.get('numero_pisos'))
+        return PropiedadDTO(fecha_creacion=fecha_creacion, fecha_actualizacion=fecha_actualizacion, id=_id, nombre=_nombre, informacion_geoespacial=_informacion_geoespacial, informacion_compania=_informacion_compania, informacion_contractual=_informacion_contractual, informacion_catastral=_informacion_catastral )
 
     def dto_a_entidad(self, dto: PropiedadDTO) -> Propiedad:
         propiedad = Propiedad()
@@ -40,3 +44,6 @@ class MapeadorPropiedad(RepMap):
         propiedad.informacion_contractual = dto.informacion_contractual
         propiedad.informacion_catastral = dto.informacion_catastral
         return propiedad
+
+    def obtener_tipo(self) -> type:
+        return Propiedad.__class__
