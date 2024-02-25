@@ -28,7 +28,7 @@ class ServicioPropiedad(Servicio):
         propiedad.crear_propiedad(propiedad)
 
         repositorio = self.fabrica_repositorio.crear_objeto(RepositorioPropiedades.__class__)
-
+        repositorio.agregar(propiedad)
         # UOW Añadir
         #UnidadTrabajoPuerto.registrar_batch(repositorio.agregar, propiedad)
         #UnidadTrabajoPuerto.savepoint()
