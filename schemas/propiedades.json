@@ -1,0 +1,5 @@
+{
+    "schema": "{\"type\":\"record\",\"name\":\"Propiedad\",\"namespace\":\"com.propiedades.transacciones.avro\",\"fields\":[{\"name\":\"id_propiedad\",\"type\":\"string\"},{\"name\":\"id_transaccion\",\"type\":\"string\"}]}",
+    "type": "AVRO",
+    "properties": {}
+}

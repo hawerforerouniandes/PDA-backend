@@ -2,6 +2,11 @@
 
 Repositorio con implementación de servicios de propiedades de los alpes siguiendo los principios y patrones de DDD.
 
+## Requerimientos
+- Python 
+- docker
+- docker-compose
+
 
 ## Estructura del proyecto
 
@@ -14,6 +19,41 @@ El repositorio en su raíz está estructurado de la siguiente forma:
 - **.gitpod.yml**: Archivo que define las tareas/pasos a ejecutar para configurar su workspace en Gitpod
 - **README.md**: El archivo que está leyendo :)
 - **requirements.txt**: Archivo con los requerimientos para el correcto funcionamiento del proyecto (librerias Python)
+
+
+### Inicializar pulsar 
+
+Desde el directorio principal ejecute el siguiente comando desde la terminal de comandos.
+
+```bash
+docker-compose up 
+```
+
+una vez este arriba los servicios procedemos a crear los topics
+
+```bash
+docker exec -it broker ./bin/pulsar-admin topics create-partitioned-topic --partitions 1 transaccionespda
+docker exec -it broker ./bin/pulsar-admin topics create-partitioned-topic --partitions 1 propiedades
+docker exec -it broker ./bin/pulsar-admin topics list-partitioned-topics public/default
+```
+lo anterior creara los topics necesarios para el proyecto y listara los mismos
+
+
+despues de esto procedemos a crear los esquemas 
+
+```bash
+curl -i -X POST \
+  http://localhost:8080/admin/v2/schemas/public/default/transaccionespda/schema \
+  -H "Content-Type: application/json" \
+  --data-binary "@schemas/transacciones.json"
+
+curl -i -X POST \
+  http://localhost:8080/admin/v2/schemas/public/default/propiedades/schema \
+  -H "Content-Type: application/json" \
+  --data-binary "@schemas/propiedades.json"
+
+
+```
 
 
 ## Ejecutar Aplicación
