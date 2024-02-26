@@ -7,6 +7,7 @@ persistir objetos dominio (agregaciones) en la capa de infraestructura del domin
 from uuid import UUID
 
 from google.cloud import datastore
+from pda.modulos.propiedades.aplicacion.mapeadores import MapeadorPropiedad
 
 from pda.modulos.propiedades.dominio.entidades import Propiedad
 from pda.modulos.propiedades.dominio.fabricas import FabricaPropiedades
@@ -33,9 +34,13 @@ class FirestorePropiedadRepository(RepositorioPropiedades):
     def fabrica_propiedades(self):
         return self._fabrica_propiedades
 
-    def obtener_por_id(self, id: UUID) -> Propiedad:
-        # TODO
-        raise NotImplementedError
+    def obtener_por_id(self, id: str) -> Propiedad:
+        
+        key_propiedad = self.client.key('propiedades', int(id))
+        propiedad = self.client.get(key_propiedad)
+        print(propiedad)
+
+        return self.fabrica_propiedades.crear_objeto(propiedad, MapeadorPropiedad())
 
     def agregar(self, entity: Propiedad):
         # Convert Propiedad object to dictionary

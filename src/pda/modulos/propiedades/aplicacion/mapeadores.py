@@ -37,12 +37,13 @@ class MapeadorPropiedad(RepMap):
         return PropiedadDTO(fecha_creacion=fecha_creacion, fecha_actualizacion=fecha_actualizacion, id=_id, nombre=_nombre, informacion_geoespacial=_informacion_geoespacial, informacion_compania=_informacion_compania, informacion_contractual=_informacion_contractual, informacion_catastral=_informacion_catastral )
 
     def dto_a_entidad(self, dto: PropiedadDTO) -> Propiedad:
+        print(dto)
         propiedad = Propiedad()
-        propiedad.nombre = dto.nombre
-        propiedad.informacion_geoespacial = dto.informacion_geoespacial
-        propiedad.informacion_compania = dto.informacion_compania
-        propiedad.informacion_contractual = dto.informacion_contractual
-        propiedad.informacion_catastral = dto.informacion_catastral
+        propiedad.nombre = dto['nombre']
+        propiedad.informacion_geoespacial = dto['informacion_geoespacial']
+        propiedad.informacion_compania = dto['informacion_compania']
+        propiedad.informacion_contractual = dto['informacion_contractual']
+        propiedad.informacion_catastral = dto['informacion_catastral']
         return propiedad
 
     def obtener_tipo(self) -> type:

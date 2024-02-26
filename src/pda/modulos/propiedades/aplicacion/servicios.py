@@ -39,5 +39,9 @@ class ServicioPropiedad(Servicio):
     def asignar_transaccion(self, transaccion_dto: TransaccionDTO) -> TransaccionDTO:
         HandlerPropiedadIntegracion.handle_asignar_transaccion(transaccion_dto)
         return transaccion_dto
+    
+    def obtener_propiedad_por_id(self, id) -> PropiedadDTO:
+        repositorio = self.fabrica_repositorio.crear_objeto(RepositorioPropiedades.__class__)
+        return self.fabrica_propiedades.crear_objeto(repositorio.obtener_por_id(id), MapeadorPropiedad())
 
     
