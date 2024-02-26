@@ -36,12 +36,12 @@ class FirestoreTransaccionRepository(TransaccionRepository):
         
         key_transaccion = self.client.key('transacciones', int(transaccion_id))
         transaccion = self.client.get(key_transaccion)
+        print(transaccion)
         transaccion_dict = {
-            "id_propiedad": transaccion.id_propiedad,
-            "nombre_tomador": transaccion.nombre_tomador,
-            "nombre_propietario": transaccion.nombre_propietario,
-            "id_transaccion": transaccion.id,
-            "timestamp": transaccion.timestamp
+            "id_propiedad": transaccion['id_propiedad'],
+            "nombre_tomador": transaccion['nombre_tomador'],
+            "nombre_propietario": transaccion['nombre_propietario'],
+            "timestamp": transaccion['timestamp']
         }
         return transaccion_dict
 
