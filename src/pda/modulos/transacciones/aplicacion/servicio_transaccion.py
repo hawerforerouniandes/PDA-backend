@@ -1,4 +1,5 @@
 
+from pda.modulos.transacciones.aplicacion.dto import TransaccionDTO
 from pda.modulos.transacciones.infraestructura.adaptador_firestore import TransaccionRepository, FirestoreTransaccionRepository
 from pda.modulos.transacciones.infraestructura.adaptador_pulsar import AdaptadorPulsar
 from pda.modulos.transacciones.dominio.entidades import Transaccion
@@ -20,3 +21,6 @@ class ServicioTransaccion:
             }
             )
         pass
+
+    def obtener_transaccion_por_id(self, id_transaccion) -> TransaccionDTO:
+        return self.firebase_adapter.get(id_transaccion)

@@ -19,7 +19,7 @@ class Transaccion(AgregacionRaiz):
 class TransaccionRepository:
     def add(self, transaccion: Transaccion):
         raise NotImplementedError
-
-    def get(self, id_propiedad: str) -> Transaccion:
+    
+    def get(self, id_transaccion: str) -> Transaccion:
         raise NotImplementedError
 
