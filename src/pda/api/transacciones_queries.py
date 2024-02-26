@@ -13,7 +13,6 @@ bp = api.crear_blueprint('transacciones', '/transacciones')
 def dar_contrato(id=None):
     if id:
         st = ServicioTransaccion()
-        map_transaccion = MapeadorTransaccionDTOJson()
-        return map_transaccion.dto_a_externo(st.obtener_transaccion_por_id(id))
+        return st.obtener_transaccion_por_id(id)
     else:
         return make_response(jsonify({"error": "ID del contrato no proporcionado"}), 400)
