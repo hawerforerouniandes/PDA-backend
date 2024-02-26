@@ -6,9 +6,9 @@ class HandlerPropiedadIntegracion(Handler):
     @staticmethod
     def handle_asignar_transaccion(evento):
         despachador = Despachador()
-        despachador.publicar_comando(evento, 'eventos-propiedad')
+        despachador.publicar_comando(evento, 'transaccionespda')
 
     @staticmethod
     def handle_transaccion_asignada(evento):
         despachador = Despachador()
-        despachador.publicar_evento(evento, 'eventos-propiedad')
+        despachador.publicar_evento(evento, 'transaccionespda')

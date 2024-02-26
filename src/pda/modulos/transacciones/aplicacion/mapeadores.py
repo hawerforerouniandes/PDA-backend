@@ -25,5 +25,5 @@ class MapeadorTransaccion:
         transaccion = Transaccion()
         transaccion.id_propiedad = dto.id_propiedad
         transaccion.nombre_tomador = dto.nombre_tomador
-        transaccion.nombre_propietario = dto.nombre_propiedario
+        transaccion.nombre_propietario = dto.nombre_propietario
         return transaccion

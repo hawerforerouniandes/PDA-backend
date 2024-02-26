@@ -33,10 +33,10 @@ def start_pulsar_consumer():
     }
 
     # Send the message
-    producer.send(data)
+    #producer.send(data)
 
     # Close the producer when done
-    producer.close()
+    #producer.close()
 
     consumer = client.subscribe('transaccionespda', consumer_type=pulsar.ConsumerType.Shared, subscription_name='propiedades-transacciones', schema=avro_schema)
 
