@@ -104,7 +104,7 @@ Los siguientes JSON pueden ser usados para probar el API:
 
 ### Crear Propiedad
 
-- **Endpoint**: `/propiedad`
+- **Endpoint**: `/propiedades/propiedad`
 - **Método**: `POST`
 - **Headers**: `Content-Type='aplication/json'`
 
@@ -134,11 +134,27 @@ Los siguientes JSON pueden ser usados para probar el API:
 }
 ```
 
-### Consultar propiedad
+### Asignar Transaccion
 
-- **Endpoint**: `/propiedad/{id}`
+- **Endpoint**: `/propiedades/propiedad/transaccion`
+- **Método**: `POST`
+- **Headers**: `Content-Type='aplication/json'`
+
+```json
+{
+    "id_propiedad":"0e81c002-d514-4409-89d5-95822c332618",
+    "nombre_tomador": "Ricardo Tellez",
+    "nombre_propietario":"Evaristo Rendon"
+}
+```
+
+
+### Consulta Transaccion
+
+- **Endpoint**: `/transacciones/{idTransaccion}`
 - **Método**: `GET`
 - **Headers**: `Content-Type='aplication/json'`
+
 
 ## Ejecutar pruebas
 

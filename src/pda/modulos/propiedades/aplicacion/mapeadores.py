@@ -12,8 +12,7 @@ class MapeadorPropiedadDTOJson(AppMap):
         informacion_compania = externo.get('informacion_compania')
         informacion_contractual = externo.get('informacion_contractual')
         informacion_catastral = externo.get('informacion_catastral')
-
-        return PropiedadDTO(fecha_creacion, fecha_actualizacion, "", nombre, informacion_geoespacial, informacion_compania, informacion_contractual, informacion_catastral)
+        return PropiedadDTO("",nombre= nombre, fecha_creacion=fecha_creacion, fecha_actualizacion=fecha_actualizacion, informacion_geoespacial=informacion_geoespacial, informacion_compania=informacion_compania, informacion_contractual= informacion_contractual, informacion_catastral=informacion_catastral)
 
     def dto_a_externo(self, dto: PropiedadDTO) -> dict:
         return dto.__dict__
@@ -39,11 +38,11 @@ class MapeadorPropiedad(RepMap):
     def dto_a_entidad(self, dto: PropiedadDTO) -> Propiedad:
         print(dto)
         propiedad = Propiedad()
-        propiedad.nombre = dto['nombre']
-        propiedad.informacion_geoespacial = dto['informacion_geoespacial']
-        propiedad.informacion_compania = dto['informacion_compania']
-        propiedad.informacion_contractual = dto['informacion_contractual']
-        propiedad.informacion_catastral = dto['informacion_catastral']
+        propiedad.nombre = dto.nombre
+        propiedad.informacion_geoespacial = dto.informacion_geoespacial
+        propiedad.informacion_compania = dto.informacion_compania
+        propiedad.informacion_contractual = dto.informacion_contractual
+        propiedad.informacion_catastral = dto.informacion_catastral
         return propiedad
 
     def obtener_tipo(self) -> type:
