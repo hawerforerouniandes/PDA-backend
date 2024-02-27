@@ -40,7 +40,12 @@ docker exec -it broker ./bin/pulsar-admin topics list-partitioned-topics public/
 lo anterior creara los topics necesarios para el proyecto y listara los mismos
 
 
+Opcional puede leer los topics 
+docker exec -it broker ./bin/pulsar-client consume -s sub apache/pulsar
+
 despues de esto procedemos a crear los esquemas 
+
+
 
 ```bash
 curl -i -X POST \
