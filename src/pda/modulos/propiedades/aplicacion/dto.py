@@ -29,6 +29,7 @@ class InformacionCatastralDTO(DTO):
 @dataclass(frozen=True)
 class PropiedadDTO(DTO):
     id: str = field(default_factory=str)
+    id_propiedad: str = field(default_factory=str)
     nombre: str = field(default_factory=str)
     fecha_creacion: str = field(default_factory=str)
     fecha_actualizacion: str = field(default_factory=str)

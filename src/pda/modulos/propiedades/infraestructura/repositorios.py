@@ -63,7 +63,7 @@ class FirestorePropiedadRepository(RepositorioPropiedades):
         transaction_ref = datastore.Entity(key=key)
         transaction_ref.update(propiedad_dict)
         self.client.put(transaction_ref)
-        print("Propiedad a Persistir: ", propiedad_dict)
+        entity.id_propiedad = transaction_ref.id
         return entity
 
     def asignar_transaccion(self, entity: Transaccion):

@@ -38,12 +38,12 @@ class InformacionCatastral(Entidad):
 
 @dataclass
 class Propiedad(AgregacionRaiz):
-    id_propietario: UUID = field(hash=True, default=None)
+    id_propiedad: str = field(default=None)
     nombre: str = field(default=None)
     informacion_catastral: InformacionCatastral = field(default_factory=InformacionCatastral)
     informacion_contractual: InformacionContractual = field(default_factory=InformacionContractual)
     informacion_geoespacial: InformacionGeoespacial = field(default_factory=InformacionGeoespacial)
     informacion_compania: InformacionCompania = field(default_factory=InformacionCompania)
     def crear_propiedad(self, propiedad: Propiedad):
-        self.id_propietario  = propiedad.id_propietario
+        self.id_propiedad  = propiedad.id_propiedad
         self.agregar_evento(PropiedadCreada(id_propiedad=self.id, fecha_creacion=self.fecha_creacion))
