@@ -37,8 +37,15 @@ class FirestorePropiedadRepository(RepositorioPropiedades):
     def obtener_por_id(self, id: str) -> Propiedad:
         
         key_propiedad = self.client.key('propiedades', int(id))
-        propiedad = self.client.get(key_propiedad)
-        print(propiedad)
+        propiedadFirebase = self.client.get(key_propiedad)
+        print(propiedadFirebase)
+
+        propiedad = Propiedad()
+        propiedad.nombre = propiedadFirebase['nombre']
+        propiedad.informacion_geoespacial = propiedadFirebase['informacion_geoespacial']
+        propiedad.informacion_compania = propiedadFirebase['informacion_compania']
+        propiedad.informacion_contractual = propiedadFirebase['informacion_contractual']
+        propiedad.informacion_catastral = propiedadFirebase['informacion_catastral']
 
         return self.fabrica_propiedades.crear_objeto(propiedad, MapeadorPropiedad())
 

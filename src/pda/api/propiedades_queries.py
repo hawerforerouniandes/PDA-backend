@@ -15,7 +15,7 @@ def dar_propiedad(id=None):
         
         sp = ServicioPropiedad()
         map_propiedad = MapeadorPropiedadDTOJson()
-        
+    
         return map_propiedad.dto_a_externo(sp.obtener_propiedad_por_id(id))
     
     else:
