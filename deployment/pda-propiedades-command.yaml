@@ -17,12 +17,7 @@ spec:
     spec:
       containers:
       - name: "pda-propiedades-command"
-        image: "us-central1-docker.pkg.dev/alpes-propiedades/alpes-propiedades/propiedades-command:latest"
-        env:
-        - name: BROKER_HOST
-          value: "10.128.0.5"
-        - name: PULSAR_ADDRESS
-          value: "10.128.0.5"
+        image: "us-central1-docker.pkg.dev/alpes-propiedades/alpes-propiedades/propiedades-command:1.0.0"
 ---
 apiVersion: "autoscaling/v2"
 kind: "HorizontalPodAutoscaler"

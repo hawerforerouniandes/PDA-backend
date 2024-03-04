@@ -49,12 +49,12 @@ despues de esto procedemos a crear los esquemas
 
 ```bash
 curl -i -X POST \
-  http://localhost:8080/admin/v2/schemas/public/default/transaccionespda/schema \
+  http://35.222.56.106:8080/admin/v2/schemas/public/default/transaccionespda/schema \
   -H "Content-Type: application/json" \
   --data-binary "@schemas/transacciones.json"
 
 curl -i -X POST \
-  http://localhost:8080/admin/v2/schemas/public/default/propiedades/schema \
+  http://35.222.56.106:8080/admin/v2/schemas/public/default/propiedades/schema \
   -H "Content-Type: application/json" \
   --data-binary "@schemas/propiedades.json"
 

@@ -1,0 +1,4 @@
+curl -i -X POST   http://127.0.0.1:8080/admin/v2/schemas/public/default/propiedades/schema   -H "Content-Type: application/json"   --data-binary "@schemas/propiedades.json"
+curl -i -X POST   http://35.222.56.106:
+8080/admin/v2/schemas/public/default/propiedades/schema   -H "Content-Type: application/json"   --data-binary "@schemas/propiedades.json"
+curl -i -X POST   http://10.128.0.5:8080/admin/v2/schemas/public/default/propiedades/schema   -H "Content-Type: application/json"   --data-binary "@schemas/propiedades.json"

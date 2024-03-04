@@ -16,8 +16,7 @@ def start_pulsar_consumer():
     parsed_schema = parse_schema(json.loads(avro_schema_json))
     avro_schema = AvroSchema(None, schema_definition=parse_schema(parsed_schema))
     client = pulsar.Client(f'pulsar://{HOSTNAME}:6650')
-
-
+    print("host to connect:"+HOSTNAME)
 
     # Create a producer
     producer = client.create_producer(

@@ -22,6 +22,8 @@ def suscribirse_transacciones_update():
         client = pulsar.Client(f'pulsar://{HOSTNAME}:6650')
 
         print("**************propiedades")
+        print(avro_schema_json)
+        print("broker to connect "+HOSTNAME)
         consumer = client.subscribe('propiedades', consumer_type=pulsar.ConsumerType.Shared, subscription_name='propiedades-transacciones-update', schema=avro_schema)
 
         while True:
