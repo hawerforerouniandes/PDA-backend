@@ -7,7 +7,7 @@ import requests
 
 class AdaptadorPulsar :
     def __init__(self):
-        self.host = os.getenv('PULSAR_ADDRESS', default="localhost")
+        self.host = os.getenv('PULSAR_ADDRESS', default="10.128.0.5")
         self.client = pulsar.Client(f'pulsar://{self.host}:6650')
 
     def emitEvent(self, message):

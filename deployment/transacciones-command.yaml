@@ -1,0 +1,63 @@
+apiVersion: "apps/v1"
+kind: "Deployment"
+metadata:
+  name: "transacciones-command"
+  namespace: "default"
+  labels:
+    app: "transacciones-command"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: "transacciones-command"
+  template:
+    metadata:
+      labels:
+        app: "transacciones-command"
+    spec:
+      containers:
+      - name: "transacciones-command"
+        image: "us-central1-docker.pkg.dev/alpes-propiedades/alpes-propiedades/transacciones-command:1.0.3"
+        env:
+          - name: PULSAR_ADDRESS
+            value: "35.222.56.106"
+          - name: BROKER_HOST
+            value: "35.222.56.106"
+---
+apiVersion: "autoscaling/v2"
+kind: "HorizontalPodAutoscaler"
+metadata:
+  name: "transacciones-command"
+  namespace: "default"
+  labels:
+    app: "transacciones-command"
+spec:
+  scaleTargetRef:
+    kind: "Deployment"
+    name: "transacciones-command"
+    apiVersion: "apps/v1"
+  minReplicas: 1
+  maxReplicas: 2
+  metrics:
+  - type: "Resource"
+    resource:
+      name: "cpu"
+      target:
+        type: "Utilization"
+        averageUtilization: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: transacciones-command-service
+  namespace: default
+  labels:
+    app: transacciones-command
+spec:
+  type: ClusterIP  # Change this from LoadBalancer to ClusterIP
+  ports:
+    - port: 80
+      targetPort: 5003
+      protocol: TCP
+  selector:
+    app: transacciones-command

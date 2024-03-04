@@ -9,9 +9,9 @@ from pda.modulos.transacciones.aplicacion.servicio_transaccion import ServicioTr
 from fastavro.schema import parse_schema
 
 def start_pulsar_consumer():
-    HOSTNAME = os.getenv('PULSAR_ADDRESS', default="localhost")
+    HOSTNAME = os.getenv('PULSAR_ADDRESS', default="35.222.56.106")
 
-    json_schema = requests.get(f'http://{HOSTNAME}:8080/admin/v2/schemas/public/default/transaccionespda/schema').json()
+    json_schema = requests.get(f'http://{HOSTNAME}:8080/admin/v2/schemas/public/35.222.56.106/schema').json()
     avro_schema_json = json_schema['data']  # Extract the actual schema definition
     parsed_schema = parse_schema(json.loads(avro_schema_json))
     avro_schema = AvroSchema(None, schema_definition=parse_schema(parsed_schema))
