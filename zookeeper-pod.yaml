@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    kompose.cmd: kompose convert --profile pulsar
+    kompose.version: 1.32.0 (HEAD)
+  labels:
+    io.kompose.network/pda-backend-pulsar: "true"
+    io.kompose.service: zookeeper
+  name: zookeeper
+spec:
+  containers:
+    - args:
+        - bash
+        - -c
+        - "bin/apply-config-from-env.py conf/zookeeper.conf && \n       bin/generate-zookeeper-config.sh conf/zookeeper.conf && \n       exec bin/pulsar zookeeper"
+      env:
+        - name: metadataStoreUrl
+          value: zk:zookeeper:2181
+      image: apachepulsar/pulsar:latest
+      livenessProbe:
+        exec:
+          command:
+            - bin/pulsar-zookeeper-ruok.sh
+        failureThreshold: 30
+        periodSeconds: 10
+        timeoutSeconds: 5
+      name: zookeeper
+      volumeMounts:
+        - mountPath: /pulsar/data/zookeeper
+          name: zookeeper-claim0
+  restartPolicy: OnFailure
+  volumes:
+    - name: zookeeper-claim0
+      persistentVolumeClaim:
+        claimName: zookeeper-claim0
