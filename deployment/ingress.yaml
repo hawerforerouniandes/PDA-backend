@@ -1,0 +1,31 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: alpes-propiedades-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: "34.135.217.167.nip.io"
+    http:
+      paths:
+      - path: /propiedades
+        pathType: Prefix
+        backend:
+          service:
+            name: pda-propiedades-command-service
+            port:
+              number: 80
+      - path: /propiedad
+        pathType: Prefix
+        backend:
+          service:
+            name: pda-propiedades-query-service
+            port:
+              number: 80
+      - path: /transacciones
+        pathType: Prefix
+        backend:
+          service:
+            name: transacciones-query-service
+            port:
+              number: 80

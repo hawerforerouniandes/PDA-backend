@@ -24,7 +24,8 @@ services:
       interval: 10s
       timeout: 5s
       retries: 30
-
+    ports:
+      - "2181:2181"
 # Init cluster metadata
   pulsar-init:
     container_name: pulsar-init
@@ -83,8 +84,8 @@ services:
       - managedLedgerDefaultEnsembleSize=1
       - managedLedgerDefaultWriteQuorum=1
       - managedLedgerDefaultAckQuorum=1
-      - advertisedAddress=broker
-      - advertisedListeners=external:pulsar://127.0.0.1:6650
+      - advertisedAddress=10.128.0.5
+      - advertisedListeners=external:pulsar://10.128.0.5:6650
     depends_on:
       zookeeper:
         condition: service_healthy
@@ -95,89 +96,3 @@ services:
       - "8080:8080"
     command: bash -c "bin/apply-config-from-env.py conf/broker.conf
       &&  exec bin/pulsar broker"
-
-  pda:
-    container_name: pda
-    hostname: pda
-    image: pda/flask
-    build:
-      context: .
-      dockerfile: pda.Dockerfile
-    profiles: [ "monolito" ]
-    networks:
-      - pulsar
-    depends_on:
-      - broker
-    environment:
-      - PULSAR_ADDRESS=broker
-    ports:
-      - "5000:5000"
-
-  pda-propiedades-command:
-    container_name: pda-propiedades-command
-    hostname: pda-propiedades-command
-    image: pda-propiedades-command/flask
-    build:
-      context: .
-      dockerfile: pda-propiedades-command.Dockerfile
-    profiles: [ "pulsar" ]
-    networks:
-      - pulsar
-    depends_on:
-      - broker
-    environment:
-      - PULSAR_ADDRESS=broker
-    ports:
-      - "5001:5001"
-
-  pda-propiedades-query:
-    container_name: pda-propiedades-query
-    hostname: pda-propiedades-query
-    image: pda-propiedades-query/flask
-    build:
-      context: .
-      dockerfile: pda-propiedades-query.Dockerfile
-    profiles: [ "pulsar" ]
-    networks:
-      - pulsar
-    depends_on:
-      - broker
-    environment:
-      - PULSAR_ADDRESS=broker
-    ports:
-      - "5002:5002"
-
-  pda-transacciones-command:
-    container_name: pda-transacciones-command
-    hostname: pda-transacciones-command
-    image: pda-transacciones-command/flask
-    build:
-      context: .
-      dockerfile: pda-transacciones-command.Dockerfile
-    profiles: [ "pulsar" ]
-    networks:
-      - pulsar
-    depends_on:
-      - broker
-    environment:
-      - PULSAR_ADDRESS=broker
-    ports:
-      - "5003:5003"
-
-
-  pda-transacciones-query:
-    container_name: pda-transacciones-query
-    hostname: pda-transacciones-query
-    image: pda-transacciones-query/flask
-    build:
-      context: .
-      dockerfile: pda-transacciones-query.Dockerfile
-    profiles: [ "pulsar" ]
-    networks:
-      - pulsar
-    depends_on:
-      - broker
-    environment:
-      - PULSAR_ADDRESS=broker
-    ports:
-      - "5004:5004"
