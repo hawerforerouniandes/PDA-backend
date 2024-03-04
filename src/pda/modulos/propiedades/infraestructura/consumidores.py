@@ -13,7 +13,7 @@ def suscribirse_transacciones_update():
     cliente = None
     try:
 
-        HOSTNAME = os.getenv('PULSAR_ADDRESS', default="localhost")
+        HOSTNAME = os.getenv('PULSAR_ADDRESS', default="10.128.0.5")
 
         json_schema = requests.get(f'http://{HOSTNAME}:8080/admin/v2/schemas/public/default/propiedades/schema').json()
         avro_schema_json = json_schema['data']  # Extract the actual schema definition
