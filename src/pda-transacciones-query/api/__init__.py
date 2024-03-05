@@ -42,9 +42,7 @@ def create_app(configuracion=None):
     from . import propiedades_queries
 
     # Registro de Blueprints
-    app.register_blueprint(propiedades.bp)
     app.register_blueprint(transacciones_queries.bp)
-    app.register_blueprint(propiedades_queries.bp)
     @app.route("/spec")
     def spec():
         swag = swagger(app)
