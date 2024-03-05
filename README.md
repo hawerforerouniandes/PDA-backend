@@ -15,7 +15,11 @@ El repositorio en su raíz está estructurado de la siguiente forma:
 
 - **.github**: Directorio donde se localizan templates para Github y los CI/CD workflows 
 - **src**: En este directorio encuentra el código fuente para proyecto, propiedades de los alpes.
-- **tests**: Directorio con todos los archivos de prueba, tanto unitarios como de integración. Sigue el estándar [recomendado por pytest](https://docs.pytest.org/en/7.1.x/explanation/goodpractices.html) y usado por [boto](https://github.com/boto/boto).
+  - pda-propiedades-command : Microservicio de propiedades command
+  - pda-propiedades-query : Microservicio de propiedades query
+  - pda-transacciones-command : Microservicio de transacciones command
+  - pda-transacciones-query : Microservicio de transacciones query
+- **deployment**: Definicion de despliegue en kubernetes
 - **.gitignore**: Archivo con la definición de archivos que se deben ignorar en el repositorio GIT
 - **.gitpod.yml**: Archivo que define las tareas/pasos a ejecutar para configurar su workspace en Gitpod
 - **README.md**: El archivo que está leyendo :)
@@ -67,13 +71,19 @@ curl -i -X POST \
 Desde el directorio principal ejecute el siguiente comando.
 
 ```bash
-flask --app src/pda/api run
+flask --app src/pda-propiedades-command/api run
+flask --app src/pda-propiedades-query/api run
+flask --app src/pda-transacciones-command/api run
+flask --app src/pda-transacciones-query/api run
 ```
 
 Siempre puede ejecutarlo en modo DEBUG:
 
 ```bash
-flask --app src/pda/api --debug run
+flask --app src/pda-propiedades-command/api --debug run
+flask --app src/pda-propiedades-query/api --debug run
+flask --app src/pda-transacciones-command/api --debug run
+flask --app src/pda-transacciones-query/api --debug run
 ```
 
 ## start project 
@@ -92,16 +102,8 @@ python3 -m pip install -r requirements.txt
 Desde el directorio principal ejecute el siguiente comando.
 
 ```bash
-docker build . -f pda.Dockerfile -t pda/flask
+docker-compose --profile pulsar up
 ```
-
-### Ejecutar contenedora (sin compose)
-
-Desde el directorio principal ejecute el siguiente comando.
-
-```bash
-docker run -p 5000:5000 pda/flask
-
 
 ## Request de ejemplo
 
@@ -160,14 +162,4 @@ Los siguientes JSON pueden ser usados para probar el API:
 - **Método**: `GET`
 - **Headers**: `Content-Type='aplication/json'`
 
-
-## Ejecutar pruebas
-
-```bash
-coverage run -m pytest
-```
-
-# Ver reporte de cobertura
-```bash
-coverage report
-```
+host gpc http://34.135.217.167.nip.io
