@@ -39,6 +39,7 @@ una vez este arriba los servicios procedemos a crear los topics
 ```bash
 docker exec -it broker ./bin/pulsar-admin topics create-partitioned-topic --partitions 1 transaccionespda
 docker exec -it broker ./bin/pulsar-admin topics create-partitioned-topic --partitions 1 propiedades
+docker exec -it broker ./bin/pulsar-admin topics create-partitioned-topic --partitions 1 saga-log
 docker exec -it broker ./bin/pulsar-admin topics list-partitioned-topics public/default
 ```
 lo anterior creara los topics necesarios para el proyecto y listara los mismos
@@ -61,6 +62,12 @@ curl -i -X POST \
   http://35.222.56.106:8080/admin/v2/schemas/public/default/propiedades/schema \
   -H "Content-Type: application/json" \
   --data-binary "@schemas/propiedades.json"
+
+  curl -i -X POST \
+  http://35.222.56.106:8080/admin/v2/schemas/public/default/saga-log/schema \
+  -H "Content-Type: application/json" \
+  --data-binary "@schemas/saga_log.json"
+
 
 
 ```
