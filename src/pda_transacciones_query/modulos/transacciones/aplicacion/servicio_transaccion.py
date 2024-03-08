@@ -1,8 +1,8 @@
 
-from pda.modulos.transacciones.aplicacion.dto import TransaccionDTO
-from pda.modulos.transacciones.infraestructura.adaptador_firestore import TransaccionRepository, FirestoreTransaccionRepository
-from pda.modulos.transacciones.infraestructura.adaptador_pulsar import AdaptadorPulsar
-from pda.modulos.transacciones.dominio.entidades import Transaccion
+from pda_transacciones_query.modulos.transacciones.aplicacion.dto import TransaccionDTO
+from pda_transacciones_query.modulos.transacciones.infraestructura.adaptador_firestore import TransaccionRepository, FirestoreTransaccionRepository
+from pda_transacciones_query.modulos.transacciones.infraestructura.adaptador_pulsar import AdaptadorPulsar
+from pda_transacciones_query.modulos.transacciones.dominio.entidades import Transaccion
 
 class ServicioTransaccion:
     def __init__(self):

@@ -1,15 +1,15 @@
 from dataclasses import dataclass
 
-from pda.modulos.propiedades.aplicacion.mapeadores import MapeadorPropiedad
-from pda.modulos.propiedades.dominio.entidades import Propiedad
-from pda.modulos.propiedades.dominio.repositorios import RepositorioPropiedades
-from pda.seedwork.aplicacion.comandos import ejecutar_commando as comando
+from pda_transacciones_query.modulos.propiedades.aplicacion.mapeadores import MapeadorPropiedad
+from pda_transacciones_query.modulos.propiedades.dominio.entidades import Propiedad
+from pda_transacciones_query.modulos.propiedades.dominio.repositorios import RepositorioPropiedades
+from pda_transacciones_query.seedwork.aplicacion.comandos import ejecutar_commando as comando
 
-from pda.modulos.propiedades.aplicacion.comandos.base import CrearPropiedadBaseHandler
-from pda.modulos.propiedades.aplicacion.dto import InformacionGeoespacialDTO, InformacionCompaniaDTO, \
+from pda_transacciones_query.modulos.propiedades.aplicacion.comandos.base import CrearPropiedadBaseHandler
+from pda_transacciones_query.modulos.propiedades.aplicacion.dto import InformacionGeoespacialDTO, InformacionCompaniaDTO, \
     InformacionContractualDTO, InformacionCatastralDTO, PropiedadDTO
-from pda.seedwork.aplicacion.comandos import Comando
-from pda.seedwork.infraestructura.uow import UnidadTrabajoPuerto
+from pda_transacciones_query.seedwork.aplicacion.comandos import Comando
+from pda_transacciones_query.seedwork.infraestructura.uow import UnidadTrabajoPuerto
 
 
 @dataclass

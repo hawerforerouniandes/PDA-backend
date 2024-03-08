@@ -1,5 +1,5 @@
 from dataclasses import dataclass, field
-from pda.seedwork.aplicacion.dto import DTO
+from pda_propiedades_query.seedwork.aplicacion.dto import DTO
 
 @dataclass(frozen=True)
 class InformacionGeoespacialDTO(DTO):

@@ -1,6 +1,6 @@
-from pda.seedwork.aplicacion.dto import Mapeador as AppMap
-from pda.seedwork.dominio.repositorios import Mapeador as RepMap
-from pda.modulos.propiedades.dominio.entidades import Propiedad
+from pda_propiedades_query.seedwork.aplicacion.dto import Mapeador as AppMap
+from pda_propiedades_query.seedwork.dominio.repositorios import Mapeador as RepMap
+from pda_propiedades_query.modulos.propiedades.dominio.entidades import Propiedad
 from .dto import PropiedadDTO, InformacionGeoespacialDTO, InformacionCompaniaDTO, InformacionContractualDTO, InformacionCatastralDTO
 
 class MapeadorPropiedadDTOJson(AppMap):

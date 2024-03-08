@@ -23,10 +23,10 @@ def create_app(configuracion=None):
     app.config['SESSION_TYPE'] = 'filesystem'
 
      # Inicializa la DB
-    from pda.config.db import init_db
+    from pda_transacciones_command.config.db import init_db
     init_db(app)
 
-    from pda.config.db import db
+    from pda_transacciones_command.config.db import db
 
     importar_modelos_alchemy()
 

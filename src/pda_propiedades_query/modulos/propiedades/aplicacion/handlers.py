@@ -1,5 +1,5 @@
-from pda.seedwork.aplicacion.handlers import Handler
-from pda.modulos.propiedades.infraestructura.despachadores import Despachador
+from pda_propiedades_query.seedwork.aplicacion.handlers import Handler
+from pda_propiedades_query.modulos.propiedades.infraestructura.despachadores import Despachador
 
 class HandlerPropiedadIntegracion(Handler):
     

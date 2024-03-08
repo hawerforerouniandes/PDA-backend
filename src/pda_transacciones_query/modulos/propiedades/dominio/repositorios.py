@@ -6,7 +6,7 @@ del dominio de propiedades
 """
 from abc import ABC
 
-from pda.seedwork.dominio.repositorios import Repositorio
+from pda_transacciones_query.seedwork.dominio.repositorios import Repositorio
 
 
 class RepositorioPropiedades(Repositorio, ABC):

@@ -3,7 +3,7 @@ from dataclasses import dataclass, field
 from datetime import datetime
 from uuid import UUID
 
-from pda.seedwork.dominio.eventos import (EventoDominio)
+from pda_propiedades_query.seedwork.dominio.eventos import (EventoDominio)
 
 @dataclass
 class PropiedadCreada(EventoDominio):

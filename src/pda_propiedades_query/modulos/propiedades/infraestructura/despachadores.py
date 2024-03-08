@@ -3,11 +3,11 @@ from datetime import datetime
 import pulsar
 from pulsar.schema import AvroSchema
 
-from pda.modulos.propiedades.infraestructura.schema.v1.comandos import AsignarTransaccionPayload, \
+from pda_propiedades_query.modulos.propiedades.infraestructura.schema.v1.comandos import AsignarTransaccionPayload, \
     ComandoAsignarTransaccion
-from pda.modulos.propiedades.infraestructura.schema.v1.eventos import TransaccionAsignadaPayload, \
+from pda_propiedades_query.modulos.propiedades.infraestructura.schema.v1.eventos import TransaccionAsignadaPayload, \
     EventoTransaccionAsignada
-from pda.seedwork.infraestructura import utils
+from pda_propiedades_query.seedwork.infraestructura import utils
 import requests
 from fastavro.schema import parse_schema
 import json

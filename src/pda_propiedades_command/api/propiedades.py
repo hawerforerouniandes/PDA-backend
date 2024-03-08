@@ -1,8 +1,8 @@
-from pda.modulos.propiedades.aplicacion.mapeadores import MapeadorPropiedadDTOJson
-from pda.modulos.propiedades.aplicacion.servicios import ServicioPropiedad
-from pda.modulos.transacciones.aplicacion.mapeadores import MapeadorTransaccionDTOJson
-from pda.seedwork.dominio.excepciones import ExcepcionDominio
-from pda.seedwork.presentacion import api
+from pda_propiedades_command.modulos.propiedades.aplicacion.mapeadores import MapeadorPropiedadDTOJson
+from pda_propiedades_command.modulos.propiedades.aplicacion.servicios import ServicioPropiedad
+from pda_propiedades_command.modulos.transacciones.aplicacion.mapeadores import MapeadorTransaccionDTOJson
+from pda_propiedades_command.seedwork.dominio.excepciones import ExcepcionDominio
+from pda_propiedades_command.seedwork.presentacion import api
 import json
 from flask import request
 from flask import Response

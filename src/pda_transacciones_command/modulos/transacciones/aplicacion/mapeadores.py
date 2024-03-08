@@ -1,7 +1,7 @@
-from pda.modulos.transacciones.aplicacion.dto import TransaccionDTO
-from pda.modulos.transacciones.dominio.entidades import Transaccion
-from pda.seedwork.aplicacion.dto import Mapeador as AppMap
-from pda.seedwork.dominio.repositorios import Mapeador as RepMap
+from pda_transacciones_command.modulos.transacciones.aplicacion.dto import TransaccionDTO
+from pda_transacciones_command.modulos.transacciones.dominio.entidades import Transaccion
+from pda_transacciones_command.seedwork.aplicacion.dto import Mapeador as AppMap
+from pda_transacciones_command.seedwork.dominio.repositorios import Mapeador as RepMap
 
 class MapeadorTransaccionDTOJson(AppMap):
     def externo_a_dto(self, externo: any) -> TransaccionDTO:

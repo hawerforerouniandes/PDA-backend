@@ -7,8 +7,8 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from uuid import UUID
 
-from pda.modulos.propiedades.dominio.eventos import PropiedadCreada
-from pda.seedwork.dominio.entidades import AgregacionRaiz, Entidad
+from pda_transacciones_query.modulos.propiedades.dominio.eventos import PropiedadCreada
+from pda_transacciones_query.seedwork.dominio.entidades import AgregacionRaiz, Entidad
 
 
 @dataclass

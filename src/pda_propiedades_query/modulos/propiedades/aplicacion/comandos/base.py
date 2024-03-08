@@ -1,6 +1,6 @@
-from pda.modulos.propiedades.dominio.fabricas import FabricaPropiedades
-from pda.modulos.propiedades.infraestructura.fabricas import FabricaRepositorio
-from pda.seedwork.aplicacion.comandos import ComandoHandler
+from pda_propiedades_query.modulos.propiedades.dominio.fabricas import FabricaPropiedades
+from pda_propiedades_query.modulos.propiedades.infraestructura.fabricas import FabricaRepositorio
+from pda_propiedades_query.seedwork.aplicacion.comandos import ComandoHandler
 
 
 class CrearPropiedadBaseHandler(ComandoHandler):

@@ -1,5 +1,5 @@
-from pda.config.db import db
-from pda.seedwork.infraestructura.uow import UnidadTrabajo, Batch
+from pda_propiedades_query.config.db import db
+from pda_propiedades_query.seedwork.infraestructura.uow import UnidadTrabajo, Batch
 
 class UnidadTrabajoSQLAlchemy(UnidadTrabajo):
 

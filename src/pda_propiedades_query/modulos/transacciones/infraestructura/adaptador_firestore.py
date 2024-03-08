@@ -2,7 +2,7 @@
 from google.cloud import datastore
 import uuid
 from datetime import datetime
-from pda.modulos.transacciones.dominio.entidades import Transaccion, TransaccionRepository
+from pda_propiedades_query.modulos.transacciones.dominio.entidades import Transaccion, TransaccionRepository
 import firebase_admin
 from firebase_admin import credentials
 import os

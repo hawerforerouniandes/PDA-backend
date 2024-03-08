@@ -4,8 +4,8 @@ from pulsar.schema import *
 import os
 import requests
 import json
-from pda.modulos.transacciones.aplicacion.mapeadores import MapeadorTransaccionDTOJson, MapeadorTransaccion
-from pda.modulos.transacciones.aplicacion.servicio_transaccion import ServicioTransaccion
+from pda_propiedades_command.modulos.transacciones.aplicacion.mapeadores import MapeadorTransaccionDTOJson, MapeadorTransaccion
+from pda_propiedades_command.modulos.transacciones.aplicacion.servicio_transaccion import ServicioTransaccion
 from fastavro.schema import parse_schema
 
 def start_pulsar_consumer():

@@ -1,9 +1,9 @@
-from pda.seedwork.aplicacion.servicios import Servicio
-from pda.modulos.propiedades.dominio.entidades import Propiedad
-from pda.modulos.propiedades.dominio.fabricas import FabricaPropiedades
-from pda.modulos.propiedades.infraestructura.fabricas import FabricaRepositorio
-from pda.modulos.propiedades.infraestructura.repositorios import RepositorioPropiedades
-from pda.seedwork.infraestructura.uow import UnidadTrabajoPuerto
+from pda_transacciones_command.seedwork.aplicacion.servicios import Servicio
+from pda_transacciones_command.modulos.propiedades.dominio.entidades import Propiedad
+from pda_transacciones_command.modulos.propiedades.dominio.fabricas import FabricaPropiedades
+from pda_transacciones_command.modulos.propiedades.infraestructura.fabricas import FabricaRepositorio
+from pda_transacciones_command.modulos.propiedades.infraestructura.repositorios import RepositorioPropiedades
+from pda_transacciones_command.seedwork.infraestructura.uow import UnidadTrabajoPuerto
 from .handlers import HandlerPropiedadIntegracion
 from .mapeadores import MapeadorPropiedad
 

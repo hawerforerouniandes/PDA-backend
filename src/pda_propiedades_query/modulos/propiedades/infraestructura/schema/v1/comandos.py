@@ -1,4 +1,4 @@
-from pda.seedwork.infraestructura.schema.v1.comandos import ComandoIntegracion
+from pda_propiedades_query.seedwork.infraestructura.schema.v1.comandos import ComandoIntegracion
 from pulsar.schema import *
 
 class AsignarTransaccionPayload(ComandoIntegracion):

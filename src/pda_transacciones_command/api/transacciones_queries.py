@@ -1,8 +1,8 @@
-from pda.modulos.transacciones.aplicacion.servicio_transaccion import ServicioTransaccion
-from pda.modulos.transacciones.aplicacion.mapeadores import MapeadorTransaccionDTOJson
+from pda_transacciones_command.modulos.transacciones.aplicacion.servicio_transaccion import ServicioTransaccion
+from pda_transacciones_command.modulos.transacciones.aplicacion.mapeadores import MapeadorTransaccionDTOJson
 
-from pda.seedwork.dominio.excepciones import ExcepcionDominio
-from pda.seedwork.presentacion import api
+from pda_transacciones_command.seedwork.dominio.excepciones import ExcepcionDominio
+from pda_transacciones_command.seedwork.presentacion import api
 import json
 from flask import request
 from flask import Response, make_response, jsonify

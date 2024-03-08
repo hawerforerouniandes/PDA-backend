@@ -1,8 +1,8 @@
-from pda.modulos.propiedades.aplicacion.servicios import ServicioPropiedad
-from pda.modulos.propiedades.aplicacion.mapeadores import MapeadorPropiedadDTOJson
+from pda_propiedades_query.modulos.propiedades.aplicacion.servicios import ServicioPropiedad
+from pda_propiedades_query.modulos.propiedades.aplicacion.mapeadores import MapeadorPropiedadDTOJson
 
-from pda.seedwork.dominio.excepciones import ExcepcionDominio
-from pda.seedwork.presentacion import api
+from pda_propiedades_query.seedwork.dominio.excepciones import ExcepcionDominio
+from pda_propiedades_query.seedwork.presentacion import api
 import json
 from flask import request
 from flask import Response, make_response, jsonify

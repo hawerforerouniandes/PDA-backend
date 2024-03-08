@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from enum import Enum
 
-from pda.seedwork.dominio.entidades import AgregacionRaiz
+from pda_propiedades_command.seedwork.dominio.entidades import AgregacionRaiz
 #from pydispatch import dispatcher
 
 import pickle
@@ -81,7 +81,7 @@ def is_flask():
         return False
 
 def registrar_unidad_de_trabajo(serialized_obj):
-    from pda.config.uow import UnidadTrabajoSQLAlchemy
+    from pda_propiedades_command.config.uow import UnidadTrabajoSQLAlchemy
     from flask import session
     
 
@@ -89,7 +89,7 @@ def registrar_unidad_de_trabajo(serialized_obj):
 
 def flask_uow():
     from flask import session
-    from pda.config.uow import UnidadTrabajoSQLAlchemy
+    from pda_propiedades_command.config.uow import UnidadTrabajoSQLAlchemy
     if session.get('uow'):
         return session['uow']
     else:

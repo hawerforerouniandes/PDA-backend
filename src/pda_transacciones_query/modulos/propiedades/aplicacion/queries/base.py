@@ -1,6 +1,6 @@
-from pda.seedwork.aplicacion.queries import QueryHandler
-from pda.modulos.propiedades.infraestructura.fabricas import FabricaRepositorio
-from pda.modulos.propiedades.dominio.fabricas import FabricaPropiedades
+from pda_transacciones_query.seedwork.aplicacion.queries import QueryHandler
+from pda_transacciones_query.modulos.propiedades.infraestructura.fabricas import FabricaRepositorio
+from pda_transacciones_query.modulos.propiedades.dominio.fabricas import FabricaPropiedades
 
 class ReservaQueryBaseHandler(QueryHandler):
     def __init__(self):

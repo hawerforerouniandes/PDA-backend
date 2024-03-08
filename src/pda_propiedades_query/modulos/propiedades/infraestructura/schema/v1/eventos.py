@@ -1,6 +1,6 @@
 from pulsar.schema import String
 
-from pda.seedwork.infraestructura.schema.v1.comandos import ComandoIntegracion
+from pda_propiedades_query.seedwork.infraestructura.schema.v1.comandos import ComandoIntegracion
 
 
 class TransaccionAsignadaPayload(ComandoIntegracion):

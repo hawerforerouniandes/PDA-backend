@@ -6,9 +6,9 @@ objetos complejos del dominio de propiedades
 """
 from .entidades import Propiedad
 from .excepciones import TipoObjetoNoExisteEnDominioPropiedadesExcepcion
-from pda.seedwork.dominio.repositorios import Mapeador, Repositorio
-from pda.seedwork.dominio.fabricas import Fabrica
-from pda.seedwork.dominio.entidades import Entidad
+from pda_transacciones_query.seedwork.dominio.repositorios import Mapeador, Repositorio
+from pda_transacciones_query.seedwork.dominio.fabricas import Fabrica
+from pda_transacciones_query.seedwork.dominio.entidades import Entidad
 from dataclasses import dataclass
 
 @dataclass

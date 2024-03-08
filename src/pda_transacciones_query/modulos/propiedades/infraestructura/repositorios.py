@@ -7,12 +7,12 @@ persistir objetos dominio (agregaciones) en la capa de infraestructura del domin
 from uuid import UUID
 
 from google.cloud import datastore
-from pda.modulos.propiedades.aplicacion.mapeadores import MapeadorPropiedad
+from pda_transacciones_query.modulos.propiedades.aplicacion.mapeadores import MapeadorPropiedad
 
-from pda.modulos.propiedades.dominio.entidades import Propiedad
-from pda.modulos.propiedades.dominio.fabricas import FabricaPropiedades
-from pda.modulos.propiedades.dominio.repositorios import RepositorioPropiedades, RepositorioTransacciones
-from pda.modulos.transacciones.dominio.entidades import Transaccion
+from pda_transacciones_query.modulos.propiedades.dominio.entidades import Propiedad
+from pda_transacciones_query.modulos.propiedades.dominio.fabricas import FabricaPropiedades
+from pda_transacciones_query.modulos.propiedades.dominio.repositorios import RepositorioPropiedades, RepositorioTransacciones
+from pda_transacciones_query.modulos.transacciones.dominio.entidades import Transaccion
 
 
 class FirestorePropiedadRepository(RepositorioPropiedades):
