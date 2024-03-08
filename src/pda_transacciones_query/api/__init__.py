@@ -36,10 +36,7 @@ def create_app(configuracion=None):
         
 
      # Importa Blueprints
-    from . import transacciones
     from . import transacciones_queries
-    from . import propiedades
-    from . import propiedades_queries
 
     # Registro de Blueprints
     app.register_blueprint(transacciones_queries.bp)
