@@ -2,7 +2,7 @@ import os
 from flask import Flask, render_template, request, url_for, redirect, jsonify
 from flask_swagger import swagger
 import threading
-import pda.modulos.propiedades.infraestructura.consumidores as consumidor_propiedades_update
+import pda_propiedades_command.modulos.propiedades.infraestructura.consumidores as consumidor_propiedades_update
 
 # Identifica el directorio base
 basedir = os.path.abspath(os.path.dirname(__file__))

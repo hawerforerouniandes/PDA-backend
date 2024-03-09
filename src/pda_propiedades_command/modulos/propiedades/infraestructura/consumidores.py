@@ -25,16 +25,19 @@ def suscribirse_transacciones_update():
         avro_schema = AvroSchema(None, schema_definition=parse_schema(parsed_schema))
         client = pulsar.Client(f'pulsar://{HOSTNAME}:6650')
 
-        print("**************propiedades")
+        logging.info("**************consumer-propiedades")
         consumer = client.subscribe('propiedades', consumer_type=pulsar.ConsumerType.Shared, subscription_name='propiedades-transacciones-update', schema=avro_schema)
 
         while True:
             mensaje = consumer.receive()
             print(f'Evento recibido desde propiedades: {mensaje.value()}')
-            transaccion_dto = TransaccionDTO(id_transaccion=mensaje.data().get('id_transaccion'), id_propiedad=mensaje.data().get('id_propiedad'))
-            sp = ServicioPropiedad()
-            sp.actualizar_propiedad_con_transaccion(transaccion_dto)
-            consumer.acknowledge(mensaje)     
+            try:
+                transaccion_dto = TransaccionDTO(id_transaccion=mensaje.value().get('id_transaccion'), id_propiedad=mensaje.value().get('id_propiedad'), nombre_propietario="", nombre_tomador="")
+                sp = ServicioPropiedad()
+                sp.actualizar_propiedad_con_transaccion(transaccion_dto)
+                consumer.acknowledge(mensaje)
+            except Exception as e:
+                logging.error('ERROR: Error al consumir mensaje')
 
     except:
         cliente.close()

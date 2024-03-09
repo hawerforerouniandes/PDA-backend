@@ -67,9 +67,8 @@ class Despachador:
         avro_schema = AvroSchema(None, schema_definition=parse_schema(parsed_schema))
 
         evento = {
-            'name': str(name),
-            'type': str(type),
-            'payload': evento,
+            'event_name': str(name),
+            'payload': "evento",
             'application': str(application),
             'status': str(status)
         }
