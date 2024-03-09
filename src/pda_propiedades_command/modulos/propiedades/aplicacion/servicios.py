@@ -39,14 +39,13 @@ class ServicioPropiedad(Servicio):
 
     def asignar_transaccion(self, transaccion_dto: TransaccionDTO) -> TransaccionDTO:
         HandlerPropiedadIntegracion.handle_asignar_transaccion(transaccion_dto)
+        HandlerPropiedadIntegracion.handle_publicar_sagalog(transaccion_dto, 'asignar-transaccion','evento-enviado','propiedades-command','normal')
         return transaccion_dto
 
     def actualizar_propiedad_con_transaccion(self, transaccion: TransaccionDTO):
         propiedad_dto: PropiedadDTO = self.obtener_propiedad_por_id(transaccion.id_propiedad)
-        print("propiedad_dto: ",propiedad_dto)
         propiedad: Propiedad = self.fabrica_propiedades.crear_objeto(propiedad_dto, MapeadorPropiedad())
         propiedad.id_transaccion = transaccion.id_transaccion
-        print("propiedad: ", propiedad)
         repositorio = self.fabrica_repositorio.crear_objeto(RepositorioPropiedades.__class__)
         repositorio.actualizar(propiedad)
         return self.fabrica_propiedades.crear_objeto(propiedad, MapeadorPropiedad())

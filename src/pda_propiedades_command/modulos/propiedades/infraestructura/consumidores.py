@@ -9,6 +9,10 @@ import os
 import requests
 import json
 
+from pda_propiedades_command.modulos.propiedades.aplicacion.servicios import ServicioPropiedad
+from pda_propiedades_command.modulos.transacciones.aplicacion.dto import TransaccionDTO
+
+
 def suscribirse_transacciones_update():
     cliente = None
     try:
@@ -27,7 +31,9 @@ def suscribirse_transacciones_update():
         while True:
             mensaje = consumer.receive()
             print(f'Evento recibido desde propiedades: {mensaje.value()}')
-
+            transaccion_dto = TransaccionDTO(id_transaccion=mensaje.data().get('id_transaccion'), id_propiedad=mensaje.data().get('id_propiedad'))
+            sp = ServicioPropiedad()
+            sp.actualizar_propiedad_con_transaccion(transaccion_dto)
             consumer.acknowledge(mensaje)     
 
     except:
