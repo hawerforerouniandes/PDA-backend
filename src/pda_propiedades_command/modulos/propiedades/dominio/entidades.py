@@ -44,6 +44,7 @@ class Propiedad(AgregacionRaiz):
     informacion_contractual: InformacionContractual = field(default_factory=InformacionContractual)
     informacion_geoespacial: InformacionGeoespacial = field(default_factory=InformacionGeoespacial)
     informacion_compania: InformacionCompania = field(default_factory=InformacionCompania)
+    id_transaccion: str = field(default=None)
     def crear_propiedad(self, propiedad: Propiedad):
         self.id_propiedad  = propiedad.id_propiedad
         self.agregar_evento(PropiedadCreada(id_propiedad=self.id, fecha_creacion=self.fecha_creacion))

@@ -3,28 +3,28 @@ from pda_propiedades_command.seedwork.aplicacion.dto import DTO
 
 @dataclass(frozen=True)
 class InformacionGeoespacialDTO(DTO):
-    direccion: str
-    ciudad: str
-    departamento: str
-    pais: str
+    direccion: str = field(default_factory=str)
+    ciudad: str = field(default_factory=str)
+    departamento: str = field(default_factory=str)
+    pais: str = field(default_factory=str)
 
 
 @dataclass(frozen=True)
 class InformacionCompaniaDTO(DTO):
-    nombre_propietario: str
-    nit: str
-    telefono: str
+    nombre_propietario: str = field(default_factory=str)
+    nit: str = field(default_factory=str)
+    telefono: str = field(default_factory=str)
 
 @dataclass(frozen=True)
 class InformacionContractualDTO(DTO):
-    fotografias: list
+    fotografias: list = field(default_factory=list)
 
 @dataclass(frozen=True)
 class InformacionCatastralDTO(DTO):
-    tipo: str
-    tamano: str
-    tipo_construccion: str
-    numero_pisos: str
+    tipo: str = field(default_factory=str)
+    tamano: str = field(default_factory=str)
+    tipo_construccion: str = field(default_factory=str)
+    numero_pisos: str = field(default_factory=str)
 
 @dataclass(frozen=True)
 class PropiedadDTO(DTO):
@@ -37,3 +37,4 @@ class PropiedadDTO(DTO):
     informacion_compania: InformacionCompaniaDTO = field(default_factory=InformacionCompaniaDTO)
     informacion_contractual: InformacionContractualDTO = field(default_factory=InformacionContractualDTO)
     informacion_catastral: InformacionCatastralDTO = field(default_factory=InformacionCatastralDTO)
+    id_transaccion: str = field(default_factory=str)

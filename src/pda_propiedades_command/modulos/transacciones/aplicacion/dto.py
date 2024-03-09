@@ -8,3 +8,4 @@ class TransaccionDTO(DTO):
     nombre_tomador: field(default_factory=str)
     # Convertir a objeto valor
     nombre_propietario: field(default_factory=str)
+    id_transaccion: field(default_factory=str)

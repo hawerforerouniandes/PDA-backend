@@ -9,6 +9,7 @@ from .mapeadores import MapeadorPropiedad
 
 from .dto import PropiedadDTO
 from ...transacciones.aplicacion.dto import TransaccionDTO
+from ...transacciones.dominio.entidades import Transaccion
 
 
 class ServicioPropiedad(Servicio):
@@ -39,6 +40,16 @@ class ServicioPropiedad(Servicio):
     def asignar_transaccion(self, transaccion_dto: TransaccionDTO) -> TransaccionDTO:
         HandlerPropiedadIntegracion.handle_asignar_transaccion(transaccion_dto)
         return transaccion_dto
+
+    def actualizar_propiedad_con_transaccion(self, transaccion: TransaccionDTO):
+        propiedad_dto: PropiedadDTO = self.obtener_propiedad_por_id(transaccion.id_propiedad)
+        print("propiedad_dto: ",propiedad_dto)
+        propiedad: Propiedad = self.fabrica_propiedades.crear_objeto(propiedad_dto, MapeadorPropiedad())
+        propiedad.id_transaccion = transaccion.id_transaccion
+        print("propiedad: ", propiedad)
+        repositorio = self.fabrica_repositorio.crear_objeto(RepositorioPropiedades.__class__)
+        repositorio.actualizar(propiedad)
+        return self.fabrica_propiedades.crear_objeto(propiedad, MapeadorPropiedad())
     
     def obtener_propiedad_por_id(self, id) -> PropiedadDTO:
         repositorio = self.fabrica_repositorio.crear_objeto(RepositorioPropiedades.__class__)

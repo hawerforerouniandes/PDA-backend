@@ -9,17 +9,22 @@ class MapeadorTransaccionDTOJson(AppMap):
         id_propiedad = externo.get('id_propiedad')
         tomador = externo.get('nombre_tomador')
         nombre_propiedario = externo.get('nombre_propietario')
-        return TransaccionDTO(id_propiedad, tomador, nombre_propiedario)
+        id_transaccion = externo.get('id_transaccion')
+        return TransaccionDTO(id_propiedad=id_propiedad, nombre_tomador=tomador, nombre_propietario=nombre_propiedario, id_transaccion=id_transaccion)
 
     def dto_a_externo(self, dto: TransaccionDTO) -> any:
         return dto.__dict__
 
-class MapeadorTransaccion:
-    _FORMATO_FECHA = '%Y-%m-%dT%H:%M:%SZ'
-    def entidad_a_dto(self, entidad: Transaccion) -> any:
+
+class MapeadorTransaccion(RepMap):
+
+    def entidad_a_dto(self, entidad: Transaccion) -> TransaccionDTO:
         _id_propiedad = str(entidad.id_propiedad)
+        _id_transaccion = str(entidad.id_transaccion)
         _nombre_tomador = str(entidad.nombre_tomador)
         _nombre_propietario = str(entidad.nombre_propietario)
+        return TransaccionDTO(id_propiedad=_id_propiedad, nombre_tomador=_nombre_tomador,
+                              nombre_propietario=_nombre_propietario)
 
     def dto_a_entidad(self, dto: TransaccionDTO) -> Transaccion:
         transaccion = Transaccion()
@@ -27,3 +32,8 @@ class MapeadorTransaccion:
         transaccion.nombre_tomador = dto.nombre_tomador
         transaccion.nombre_propietario = dto.nombre_propietario
         return transaccion
+
+    def obtener_tipo(self) -> type:
+        return Transaccion.__class__
+
+

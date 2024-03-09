@@ -36,3 +36,18 @@ def asignar_transaccion():
 
     except ExcepcionDominio as e:
         return Response(json.dumps(dict(error=str(e))), status=400, mimetype='application/json')
+
+
+@bp.route('/propiedad/transaccion_id', methods=('POST',))
+def actualizar_propiedad_con_transaccion():
+    try:
+        transaccion_dict = request.json
+        map_transaccion = MapeadorTransaccionDTOJson()
+        transaccion_dto = map_transaccion.externo_a_dto(transaccion_dict)
+
+        sp = ServicioPropiedad()
+        dto_final = sp.actualizar_propiedad_con_transaccion(transaccion_dto)
+        return map_transaccion.dto_a_externo(dto_final)
+
+    except ExcepcionDominio as e:
+        return Response(json.dumps(dict(error=str(e))), status=400, mimetype='application/json')

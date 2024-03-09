@@ -10,6 +10,8 @@ from pda_propiedades_command.seedwork.dominio.repositorios import Mapeador, Repo
 from pda_propiedades_command.seedwork.dominio.fabricas import Fabrica
 from pda_propiedades_command.seedwork.dominio.entidades import Entidad
 from dataclasses import dataclass
+from pda_propiedades_command.modulos.transacciones.dominio.entidades import Transaccion
+
 
 @dataclass
 class _FabricaPropiedades(Fabrica):
@@ -26,5 +28,24 @@ class FabricaPropiedades(Fabrica):
         if mapeador.obtener_tipo() == Propiedad.__class__:
             fabrica_propiedad = _FabricaPropiedades()
             return fabrica_propiedad.crear_objeto(obj, mapeador)
+        else:
+            raise TipoObjetoNoExisteEnDominioPropiedadesExcepcion()
+
+
+@dataclass
+class _FabricaTransacciones(Fabrica):
+    def crear_objeto(self, obj: any, mapeador: Mapeador) -> any:
+        if isinstance(obj, Entidad):
+            return mapeador.entidad_a_dto(obj)
+        else:
+            transaccion: Transaccion = mapeador.dto_a_entidad(obj)
+            return transaccion
+
+@dataclass
+class FabricaTransacciones(Fabrica):
+    def crear_objeto(self, obj: any, mapeador: Mapeador) -> any:
+        if mapeador.obtener_tipo() == Propiedad.__class__:
+            fabrica_transaccion = _FabricaTransacciones()
+            return fabrica_transaccion.crear_objeto(obj, mapeador)
         else:
             raise TipoObjetoNoExisteEnDominioPropiedadesExcepcion()

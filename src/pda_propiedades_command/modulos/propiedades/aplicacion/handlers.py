@@ -12,3 +12,8 @@ class HandlerPropiedadIntegracion(Handler):
     def handle_transaccion_asignada(evento):
         despachador = Despachador()
         despachador.publicar_evento(evento, 'transaccionespda')
+
+    @staticmethod
+    def handle_publicar_sagalog(evento):
+        despachador = Despachador()
+        despachador.publicar_evento_sagalog(evento, 'saga-log')
