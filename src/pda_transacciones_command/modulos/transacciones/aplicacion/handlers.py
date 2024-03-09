@@ -1,5 +1,5 @@
 from pda_transacciones_command.seedwork.aplicacion.handlers import Handler
-from pda_transacciones_command.modulos.propiedades.infraestructura.despachadores import Despachador
+from pda_transacciones_command.modulos.transacciones.infraestructura.despachadores import Despachador
 
 class HandlerPropiedadIntegracion(Handler):
     
@@ -12,3 +12,8 @@ class HandlerPropiedadIntegracion(Handler):
     def handle_transaccion_asignada(evento):
         despachador = Despachador()
         despachador.publicar_evento(evento, 'transaccionespda')
+
+    @staticmethod
+    def handle_publicar_sagalog(evento, name, application, status):
+        despachador = Despachador()
+        despachador.publicar_evento_sagalog(evento, 'saga-log', name, application, status)

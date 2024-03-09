@@ -14,6 +14,6 @@ class HandlerPropiedadIntegracion(Handler):
         despachador.publicar_evento(evento, 'transaccionespda')
 
     @staticmethod
-    def handle_publicar_sagalog(evento, name, type, application, status):
+    def handle_publicar_sagalog(evento, name, application, status):
         despachador = Despachador()
-        despachador.publicar_evento_sagalog(evento, 'saga-log', name, type, application, status)
+        despachador.publicar_evento_sagalog(evento, 'saga-log', name, application, status)

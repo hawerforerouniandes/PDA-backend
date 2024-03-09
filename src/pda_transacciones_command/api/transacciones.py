@@ -4,6 +4,8 @@ from pulsar.schema import *
 import os
 import requests
 import json
+
+from pda_transacciones_command.modulos.transacciones.aplicacion.handlers import HandlerPropiedadIntegracion
 from pda_transacciones_command.modulos.transacciones.aplicacion.mapeadores import MapeadorTransaccionDTOJson, MapeadorTransaccion
 from pda_transacciones_command.modulos.transacciones.aplicacion.servicio_transaccion import ServicioTransaccion
 from fastavro.schema import parse_schema
@@ -46,7 +48,8 @@ def start_pulsar_consumer():
             try:
                 # Process the message
                 print(f'Evento recibido desde transacciones: {msg.value()}')
-
+                HandlerPropiedadIntegracion.handle_publicar_sagalog(msg.value(), 'Api Transacciones',
+                                                                    'transacciones-command', 'Evento recibido')
                 mapeadorTransaccionDTOJson = MapeadorTransaccionDTOJson()
                 mapeadorTransaccion = MapeadorTransaccion()
 

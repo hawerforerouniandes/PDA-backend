@@ -3,8 +3,7 @@ from pda_transacciones_command.modulos.propiedades.dominio.entidades import Prop
 from pda_transacciones_command.modulos.propiedades.dominio.fabricas import FabricaPropiedades
 from pda_transacciones_command.modulos.propiedades.infraestructura.fabricas import FabricaRepositorio
 from pda_transacciones_command.modulos.propiedades.infraestructura.repositorios import RepositorioPropiedades
-from pda_transacciones_command.seedwork.infraestructura.uow import UnidadTrabajoPuerto
-from .handlers import HandlerPropiedadIntegracion
+from pda_transacciones_command.modulos.transacciones.aplicacion.handlers import HandlerPropiedadIntegracion
 from .mapeadores import MapeadorPropiedad
 
 from .dto import PropiedadDTO

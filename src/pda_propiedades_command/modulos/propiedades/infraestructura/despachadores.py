@@ -59,7 +59,7 @@ class Despachador:
         print("Payload Asignar Transaccion: ", evento)
         self._publicar_mensaje(evento, topico, avro_schema)
 
-    def publicar_evento_sagalog(self, evento, topico, name, type, application, status):
+    def publicar_evento_sagalog(self, evento, topico, name, application, status):
         json_schema = requests.get(
             f'http://{utils.broker_host()}:8080/admin/v2/schemas/public/default/saga-log/schema').json()
         avro_schema_json = json_schema['data']  # Extract the actual schema definition
@@ -68,7 +68,7 @@ class Despachador:
 
         evento = {
             'event_name': str(name),
-            'payload': "evento",
+            'payload': str(evento),
             'application': str(application),
             'status': str(status)
         }

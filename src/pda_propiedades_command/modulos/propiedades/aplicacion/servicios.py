@@ -38,16 +38,24 @@ class ServicioPropiedad(Servicio):
         return self.fabrica_propiedades.crear_objeto(propiedad, MapeadorPropiedad())
 
     def asignar_transaccion(self, transaccion_dto: TransaccionDTO) -> TransaccionDTO:
+        HandlerPropiedadIntegracion.handle_publicar_sagalog(transaccion_dto, '/asignar-transaccion','propiedades-command', 'Entro a Enviar evento')
         HandlerPropiedadIntegracion.handle_asignar_transaccion(transaccion_dto)
-        HandlerPropiedadIntegracion.handle_publicar_sagalog(transaccion_dto, 'asignar-transaccion','evento-enviado','propiedades-command','normal')
+        HandlerPropiedadIntegracion.handle_publicar_sagalog(transaccion_dto, '/asignar-transaccion','propiedades-command','Finalizo enviar Evento')
         return transaccion_dto
 
     def actualizar_propiedad_con_transaccion(self, transaccion: TransaccionDTO):
+        HandlerPropiedadIntegracion.handle_publicar_sagalog(transaccion, '/actualizar-transaccion',
+                                                            'propiedades-command', 'Evento recibido')
         propiedad_dto: PropiedadDTO = self.obtener_propiedad_por_id(transaccion.id_propiedad)
         propiedad: Propiedad = self.fabrica_propiedades.crear_objeto(propiedad_dto, MapeadorPropiedad())
         propiedad.id_transaccion = transaccion.id_transaccion
         repositorio = self.fabrica_repositorio.crear_objeto(RepositorioPropiedades.__class__)
+        HandlerPropiedadIntegracion.handle_publicar_sagalog(transaccion, '/actualizar-transaccion',
+                                                            'propiedades-command',
+                                                            'Entro a actualizar propiedad con transaccion')
         repositorio.actualizar(propiedad)
+        HandlerPropiedadIntegracion.handle_publicar_sagalog(transaccion, '/actualizar-transaccion',
+                                                            'propiedades-command', 'Finalizo actualizar propiedad con transaccion')
         return self.fabrica_propiedades.crear_objeto(propiedad, MapeadorPropiedad())
     
     def obtener_propiedad_por_id(self, id) -> PropiedadDTO:
