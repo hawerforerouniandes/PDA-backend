@@ -66,7 +66,7 @@ curl -i -X POST \
   curl -i -X POST \
   http://35.222.56.106:8080/admin/v2/schemas/public/default/saga-log/schema \
   -H "Content-Type: application/json" \
-  --data-binary "@schemas/saga_log.json"
+  --data-binary "@schemas/saga-log.json"
 
 
 

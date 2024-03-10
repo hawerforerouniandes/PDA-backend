@@ -26,7 +26,7 @@ def suscribirse_transacciones_update():
         client = pulsar.Client(f'pulsar://{HOSTNAME}:6650')
 
         logging.info("**************consumer-propiedades")
-        consumer = client.subscribe('propiedades', consumer_type=pulsar.ConsumerType.Shared, subscription_name='propiedades-transacciones-update', schema=avro_schema)
+        consumer = client.subscribe('propiedades', consumer_type=pulsar.ConsumerType.Shared, subscription_name='propiedades-transacciones-update-local', schema=avro_schema)
 
         while True:
             mensaje = consumer.receive()
@@ -40,6 +40,39 @@ def suscribirse_transacciones_update():
                 logging.error('ERROR: Error al consumir mensaje')
 
     except:
+        cliente.close()
+        logging.error('ERROR: Suscribiendose al tópico de eventos!')
+        traceback.print_exc()
+        if cliente:
+            cliente.close()
+    
+def suscribirse_saga_log():
+    print("*******suscribirse_saga_log**************")
+    cliente = None
+    try:
+
+        HOSTNAME = os.getenv('PULSAR_ADDRESS', default="10.128.0.5")
+
+        json_schema = requests.get(f'http://{HOSTNAME}:8080/admin/v2/schemas/public/default/saga-log/schema').json()
+        avro_schema_json = json_schema['data']  # Extract the actual schema definition
+        logging.info("suscribirse_saga_log")
+        parsed_schema = parse_schema(json.loads(avro_schema_json))
+        avro_schema = AvroSchema(None, schema_definition=parse_schema(parsed_schema))
+        client = pulsar.Client(f'pulsar://{HOSTNAME}:6650')
+
+        consumer = client.subscribe('saga-log', consumer_type=pulsar.ConsumerType.Shared, subscription_name='saga-log', schema=avro_schema)
+
+        while True:
+            mensaje = consumer.receive()
+            try:
+                print(f'Evento recibido desde saga log: {mensaje.value()}')
+                logging.info(f'Evento recibido desde saga log: {mensaje.value()}')
+                consumer.acknowledge(mensaje)
+            except Exception as e:
+                logging.error('ERROR: Error al consumir mensaje de saga log')
+
+    except Exception as e:
+        print(e)
         cliente.close()
         logging.error('ERROR: Suscribiendose al tópico de eventos!')
         traceback.print_exc()

@@ -1,6 +1,7 @@
 import os
 from flask import Flask, render_template, request, url_for, redirect, jsonify
 from flask_swagger import swagger
+import logging
 import threading
 import pda_propiedades_command.modulos.propiedades.infraestructura.consumidores as consumidor_propiedades_update
 
@@ -32,7 +33,12 @@ def create_app(configuracion=None):
 
     with app.app_context():
         db.create_all()
-        threading.Thread(target=consumidor_propiedades_update.suscribirse_transacciones_update).start()
+        t1 = threading.Thread(target=consumidor_propiedades_update.suscribirse_transacciones_update, daemon=True)
+        t2 = threading.Thread(target=consumidor_propiedades_update.suscribirse_saga_log, daemon=True)
+        t1.start()
+        t2.start()
+        logging.info("Started subscription threads.")
+        
         
 
      # Importa Blueprinte
