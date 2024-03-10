@@ -35,8 +35,7 @@ def create_app(configuracion=None):
         threading.Thread(target=consumidor_propiedades_update.suscribirse_transacciones_update).start()
         
 
-     # Importa Blueprints
-    from . import transacciones
+     # Importa Blueprinte
     from . import transacciones_queries
     from . import propiedades
     from . import propiedades_queries
