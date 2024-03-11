@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: "pda-propiedades-query"
-        image: "us-central1-docker.pkg.dev/alpes-propiedades/alpes-propiedades/propiedades-query:1.0.1"
+        image: "us-central1-docker.pkg.dev/alpes-propiedades/alpes-propiedades/propiedades-query:3.0.0"
         env:
           - name: PULSAR_ADDRESS
             value: "35.222.56.106"
