@@ -36,18 +36,32 @@ class FirestorePropiedadRepository(RepositorioPropiedades):
 
     def obtener_por_id(self, id: str) -> Propiedad:
         
-        key_propiedad = self.client.key('propiedades', int(id))
-        propiedadFirebase = self.client.get(key_propiedad)
-        print(propiedadFirebase)
+        try:
+            key_propiedad = self.client.key('propiedades', int(id))
+            propiedadFirebase = self.client.get(key_propiedad)
 
-        propiedad = Propiedad()
-        propiedad.nombre = propiedadFirebase['nombre']
-        propiedad.informacion_geoespacial = propiedadFirebase['informacion_geoespacial']
-        propiedad.informacion_compania = propiedadFirebase['informacion_compania']
-        propiedad.informacion_contractual = propiedadFirebase['informacion_contractual']
-        propiedad.informacion_catastral = propiedadFirebase['informacion_catastral']
+            if not propiedadFirebase:
+                print(f"No se encontró la propiedad con el ID: {id}")
+                return None
 
-        return self.fabrica_propiedades.crear_objeto(propiedad, MapeadorPropiedad())
+            propiedad = Propiedad()
+
+            atributos = ['nombre', 'informacion_geoespacial', 'informacion_compania', 
+                        'informacion_contractual', 'informacion_catastral']
+            for attr in atributos:
+                if attr in propiedadFirebase:
+                    setattr(propiedad, attr, propiedadFirebase[attr])
+                else:
+                    print(f"Advertencia: No se encontró '{attr}' para la propiedad con ID: {id}")
+
+            return self.fabrica_propiedades.crear_objeto(propiedad, MapeadorPropiedad())
+
+        except ValueError as e:
+            print(f"Error al convertir el ID a entero: {e}")
+            return None
+        except Exception as e:
+            print(f"Error inesperado al obtener la propiedad: {e}")
+            return None
 
     def agregar(self, entity: Propiedad):
         # Convert Propiedad object to dictionary
