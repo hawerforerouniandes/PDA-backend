@@ -1,0 +1,215 @@
+{
+	"info": {
+		"_postman_id": "c1de58cd-46bc-4e8b-9c8d-f5945d61b2fb",
+		"name": "alpes",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3332607",
+		"_collection_link": "https://www.postman.com/crimson-shuttle-9001/workspace/miso-grupo-14/collection/3332607-c1de58cd-46bc-4e8b-9c8d-f5945d61b2fb?action=share&source=collection_link&creator=3332607"
+	},
+	"item": [
+		{
+			"name": "propiedades",
+			"item": [
+				{
+					"name": "command",
+					"item": [
+						{
+							"name": "crear propiedad",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n        \"nombre\":\"Predio uniandes 2\",\n        \"informacion_geoespacial\":{\n            \"direccion\": \"Cll 10 # 15-21\",\n            \"ciudad\": \"ciudad\",\n            \"departamento\":\"santander\",\n            \"pais\":\"colombia\"\n        }, \n        \"informacion_compania\": {\n            \"nombre_propietario\":\"ricardo perez tellez\",\n            \"nit\":\"134134141\",\n            \"telefono\":\"4355647732\"\n        },\n        \"informacion_contractual\":{\n            \"fotografias\":[\"url\",\"url2\",\"url3\"]\n        },\n        \"informacion_catastral\":{\n            \"tipo\":\"Oficina,Industial, uso_especializado\",\n            \"tamano\":\"m2\",\n            \"tipo_construccion\":\"casa,edificio\",\n            \"numero_pisos\":\"3\"\n        }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://34.135.217.167.nip.io/propiedades/propiedad",
+									"protocol": "http",
+									"host": [
+										"34",
+										"135",
+										"217",
+										"167",
+										"nip",
+										"io"
+									],
+									"path": [
+										"propiedades",
+										"propiedad"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "asignar transaccion",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id_propiedad\":\"5750704903815168\",\n    \"nombre_tomador\": \"Jael rivera testing purpose\",\n    \"nombre_propietario\":\"Jose Garay\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://34.135.217.167.nip.io/propiedades/propiedad/transaccion",
+									"protocol": "http",
+									"host": [
+										"34",
+										"135",
+										"217",
+										"167",
+										"nip",
+										"io"
+									],
+									"path": [
+										"propiedades",
+										"propiedad",
+										"transaccion"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Actualizar propiedad con transaccion",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id_propiedad\":\"5734888082767872\",\n    \"nombre_tomador\": \"Ricardo Tellez\",\n    \"nombre_propietario\":\"Evaristo Rendon\",\n    \"id_transaccion\": \"5743670015819776\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://34.135.217.167.nip.io/propiedades/propiedad/transaccion_id",
+									"protocol": "http",
+									"host": [
+										"34",
+										"135",
+										"217",
+										"167",
+										"nip",
+										"io"
+									],
+									"path": [
+										"propiedades",
+										"propiedad",
+										"transaccion_id"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "query",
+					"item": [
+						{
+							"name": "consulta_propiedad",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://34.135.217.167.nip.io/propiedad/6312840021409792",
+									"protocol": "http",
+									"host": [
+										"34",
+										"135",
+										"217",
+										"167",
+										"nip",
+										"io"
+									],
+									"path": [
+										"propiedad",
+										"6312840021409792"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "transacciones",
+			"item": [
+				{
+					"name": "Detalle transaccion",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://34.135.217.167.nip.io/transacciones/5743670015819776",
+							"protocol": "http",
+							"host": [
+								"34",
+								"135",
+								"217",
+								"167",
+								"nip",
+								"io"
+							],
+							"path": [
+								"transacciones",
+								"5743670015819776"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "http://127.0.0.1:5000",
+			"type": "string"
+		}
+	]
+}

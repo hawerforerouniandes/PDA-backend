@@ -170,3 +170,9 @@ Los siguientes JSON pueden ser usados para probar el API:
 - **Headers**: `Content-Type='aplication/json'`
 
 host gpc http://34.135.217.167.nip.io
+
+
+
+####  Postman collection
+
+importar el archivo alpes.postman_collection.json en su cliente postman local 
