@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: "transacciones-command"
-        image: "us-central1-docker.pkg.dev/alpes-propiedades/alpes-propiedades/transacciones-command:3.0.0"
+        image: "us-central1-docker.pkg.dev/alpes-propiedades/alpes-propiedades/transacciones-command:4.0.0"
         env:
           - name: PULSAR_ADDRESS
             value: "35.222.56.106"

@@ -40,7 +40,7 @@ def start_pulsar_consumer():
     # Close the producer when done
     #producer.close()
 
-    consumer = client.subscribe('transaccionespda', consumer_type=pulsar.ConsumerType.Shared, subscription_name='propiedades-transacciones', schema=avro_schema)
+    consumer = client.subscribe('transaccionespda', consumer_type=pulsar.ConsumerType.Shared, subscription_name='propiedades-transacciones-saga', schema=avro_schema)
 
     try:
         while True:
